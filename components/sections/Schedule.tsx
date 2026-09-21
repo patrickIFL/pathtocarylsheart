@@ -143,28 +143,27 @@ function Schedule() {
             perspective: "1200px",
           }}
         >
-          <div className="relative mx-auto h-[360px] w-full max-w-[600px] bg-purple-500 rounded-2xl">
+          <div className="relative mx-auto h-[360px] w-full max-w-[600px] rounded-md bg-[#bca894] shadow-[0_25px_50px_rgba(0,0,0,0.30)]">
             {/* Invitation paper content*/}
             <div
               ref={invitationRef}
               className="
-                absolute
-                left-[5%]
-                top-0
-                z-20
-                h-[520px]
-                w-[90%]
-                overflow-hidden
-                rounded-sm
-                bg-[#f3eee8]
-                px-6
-                py-10
-                text-[#171412]
-                shadow-2xl
-                shadow-black/40
-                sm:px-12
-                sm:py-12
-              "
+        absolute
+        left-[5%]
+        top-0
+        z-20
+        h-[520px]
+        w-[90%]
+        overflow-hidden
+        rounded-sm
+        bg-[#f2e6d8]
+        px-6
+        py-10
+        text-[#171412]
+        shadow-[0_20px_40px_rgba(0,0,0,0.35)]
+        sm:px-12
+        sm:py-12
+      "
             >
               {/* Letter Contents */}
               <div ref={scheduleContentRef} className="h-full overflow-y-auto">
@@ -177,7 +176,6 @@ function Schedule() {
                     The Celebration
                   </h3>
 
-                  {/* Inside envelope  */}
                   <div className="mx-auto my-6 h-px w-12 bg-[#cbbcaf]" />
                 </div>
 
@@ -236,31 +234,30 @@ function Schedule() {
               </div>
             </div>
 
-            {/* Envelope inside body #d8c8b9*/}
+            {/* Envelope inside body */}
             <div
               className="
-  absolute
-  bottom-0
-  left-0
-  z-20
-  h-[360px]
-  w-full
-  overflow-hidden
-  rounded-2xl
-  
-"
+        absolute
+        bottom-0
+        left-0
+        z-20
+        h-[360px]
+        w-full
+        overflow-hidden
+        rounded-md
+      "
             >
-              {/* Left diagonal #cdbbaa*/}
               {/* Left diagonal */}
               <div
                 className="
-    absolute
-    bottom-5
-    left-0
-    h-full
-    w-1/2
-    bg-amber-400
-  "
+          absolute
+          bottom-5
+          left-0
+          h-full
+          w-1/2
+          bg-[#d9c5ad]
+          shadow-[8px_8px_20px_rgba(0,0,0,0.18)]
+        "
                 style={{
                   clipPath: "polygon(0 0, 100% 75%, 0 75%)",
                 }}
@@ -269,13 +266,14 @@ function Schedule() {
               {/* Right diagonal */}
               <div
                 className="
-    absolute
-    bottom-5
-    right-0
-    h-full
-    w-1/2
-    bg-green-500
-  "
+          absolute
+          bottom-5
+          right-0
+          h-full
+          w-1/2
+          bg-[#d9c5ad]
+          shadow-[-8px_8px_20px_rgba(0,0,0,0.18)]
+        "
                 style={{
                   clipPath: "polygon(100% 0, 100% 75%, 0 75%)",
                 }}
@@ -284,13 +282,14 @@ function Schedule() {
               {/* Bottom rectangle */}
               <div
                 className="
-    absolute
-    bottom-0
-    left-0
-    h-[35%]
-    w-full
-    bg-purple-500
-  "
+          absolute
+          bottom-0
+          left-0
+          h-[50%]
+          w-full
+          bg-[#d2bca2]
+          shadow-[0_-6px_15px_rgba(0,0,0,0.12)]
+        "
               />
             </div>
 
@@ -298,39 +297,39 @@ function Schedule() {
             <div
               ref={flapRef}
               className="
-                absolute
-                left-0
-                top-0
-                z-40
-                h-[260px]
-                w-full
-                origin-top
-              "
+        absolute
+        left-0
+        top-0
+        z-40
+        h-[260px]
+        w-full
+        origin-top
+      "
               style={{
                 transformStyle: "preserve-3d",
               }}
             >
               {/* Front of flap */}
               <div
-                className="absolute inset-0 overflow-hidden rounded-t-2xl"
+                className="absolute inset-0 overflow-hidden rounded-t-md"
                 style={{
-                  clipPath: "polygon(0 0, 100% 0, 50% 100%)",
+                  clipPath: "polygon(0 0, 100% 0, 53% 100%, 47% 100%)",
                   backfaceVisibility: "hidden",
                 }}
               >
-                <div className="absolute inset-0 bg-red-500" />
+                <div className="absolute inset-0 bg-[#cdb496] stroke-1" />
               </div>
 
               {/* Back of flap */}
               <div
-                className="absolute inset-0 overflow-hidden rounded-b-2xl"
+                className="absolute inset-0 overflow-hidden rounded-b-md"
                 style={{
-                  clipPath: "polygon(0 100%, 100% 100%, 50% 0)",
+                  clipPath: "polygon(47% 0, 53% 0, 100% 100%, 0 100%)",
                   transform: "rotateX(180deg)",
                   backfaceVisibility: "hidden",
                 }}
               >
-                <div className="absolute inset-0 bg-blue-500" />
+                <div className="absolute inset-0 bg-[#c8b8a8]" />
               </div>
             </div>
           </div>

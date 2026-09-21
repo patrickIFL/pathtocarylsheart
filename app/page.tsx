@@ -21,9 +21,6 @@ export default function Home() {
       {/* Story Section */}
       <Story />
 
-      {/* Story Section */}
-      <StoryCarousel />
-
       {/* Where & When & Dress Code */}
       <WhereAndWhen />
 

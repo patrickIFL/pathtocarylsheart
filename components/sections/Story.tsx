@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import StoryCarousel from "../StoryCarousel";
 
 function Story() {
   return (
@@ -10,6 +11,7 @@ function Story() {
       className="scroll-mt-20 bg-[#171412] px-6 py-28 text-white"
     >
       <div className="mx-auto max-w-3xl text-center">
+        {/* Section Label */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -20,6 +22,7 @@ function Story() {
           Our Story
         </motion.p>
 
+        {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -30,6 +33,7 @@ function Story() {
           A little story about us
         </motion.h2>
 
+        {/* Divider */}
         <motion.div
           initial={{ width: 0, opacity: 0 }}
           whileInView={{ width: 64, opacity: 1 }}
@@ -38,6 +42,7 @@ function Story() {
           className="mx-auto my-8 h-px bg-white/30"
         />
 
+        {/* Story */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -58,6 +63,9 @@ function Story() {
           </p>
         </motion.div>
       </div>
+
+      {/* Story Carousel */}
+      <StoryCarousel />
     </section>
   );
 }
