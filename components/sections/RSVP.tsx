@@ -36,100 +36,123 @@ function RSVP() {
     }
 
     const ctx = gsap.context(() => {
-      // Initial states
-      gsap.set(envelope, {
-        opacity: 0,
-        y: 30,
-      });
+      const mm = gsap.matchMedia();
 
-      // RSVP paper starts just inside the envelope
-      gsap.set(invitation, {
-        y: 40,
-        height: 300,
-        zIndex: 20,
-      });
-
-      // Flap starts above everything
-      gsap.set(flap, {
-        rotateX: 0,
-        zIndex: 40,
-        transformOrigin: "top center",
-      });
-
-      // RSVP content starts hidden
-      gsap.set(rsvpContent, {
-        opacity: 0,
-        y: 20,
-      });
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: "+=1800",
-          scrub: 1,
-          pin: true,
-          pinSpacing: true,
-          anticipatePin: 1,
+      mm.add(
+        {
+          isMobile: "(max-width: 639px)",
+          isDesktop: "(min-width: 640px)",
         },
-      });
+        (context) => {
+          const { isMobile } = context.conditions as {
+            isMobile: boolean;
+            isDesktop: boolean;
+          };
 
-      // 1. Envelope enters
-      tl.to(envelope, {
-        opacity: 1,
-        y: 0,
-        duration: 0.1,
-        ease: "power2.out",
-      });
+          // Initial states
+          gsap.set(envelope, {
+            opacity: 0,
+            y: 30,
+          });
 
-      // 2. Open the flap
-      tl.to(flap, {
-        rotateX: 180,
-        duration: 0.2,
-        ease: "power2.inOut",
-      });
+          gsap.set(invitation, {
+            y: 40,
+            height: 300,
+            width: "90%",
+            left: "5%",
+            xPercent: 0,
+            zIndex: 20,
+          });
 
-      // 3. Put opened flap behind the envelope
-      tl.set(flap, {
-        zIndex: 10,
-      });
+          gsap.set(flap, {
+            rotateX: 0,
+            zIndex: 40,
+            transformOrigin: "top center",
+          });
 
-      // 4. RSVP paper begins emerging
-      // Still behind the envelope body
-      tl.to(invitation, {
-        y: -550,
-        height: 550,
-        duration: 0.1,
-        ease: "power2.out",
-      });
+          gsap.set(rsvpContent, {
+            opacity: 0,
+            y: 20,
+          });
 
-      // 5. Once it clears the envelope,
-      // bring it above the envelope body
-      tl.set(invitation, {
-        zIndex: 40,
-      });
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: section,
+              start: "top top",
+              end: "+=1800",
+              scrub: 1,
+              pin: true,
+              pinSpacing: true,
+              anticipatePin: 1,
+            },
+          });
 
-      // 6. Finish the movement
-      tl.to(invitation, {
-        y: -220,
-        height: 790,
-        duration: 0.1,
-        ease: "power3.out",
-      });
+          // 1. Envelope enters
+          tl.to(envelope, {
+            opacity: 1,
+            y: 0,
+            duration: 0.1,
+            ease: "power2.out",
+          });
 
-      // 7. Reveal the RSVP content
-      tl.to(rsvpContent, {
-        opacity: 1,
-        y: 0,
-        duration: 0.001,
-        ease: "power2.out",
-      });
+          // 2. Open the flap
+          tl.to(flap, {
+            rotateX: 180,
+            duration: 0.2,
+            ease: "power2.inOut",
+          });
 
-      // 7. Reveal the RSVP content
-      tl.to(rsvpContent, {
-        duration: 0.1,
-        ease: "power2.out",
-      });
+          // 3. Put opened flap behind the envelope
+          tl.set(flap, {
+            zIndex: 10,
+          });
+
+          // 4. RSVP paper begins emerging
+          tl.to(invitation, {
+            y: -550,
+            height: 550,
+            duration: 0.1,
+            ease: "power2.out",
+          });
+
+          // 5. Once it clears the envelope
+          tl.set(invitation, {
+            zIndex: 40,
+          });
+
+          // 6. Finish the movement
+          tl.to(invitation, {
+            y: -220,
+            height: 790,
+
+            // Mobile
+            width: isMobile ? "98vw" : "97vw",
+
+            // Center on screen
+            left: "50%",
+            xPercent: -50,
+
+            duration: 0.1,
+            ease: "power3.out",
+          });
+
+          // 7. Reveal RSVP content
+          tl.to(rsvpContent, {
+            opacity: 1,
+            y: 0,
+            duration: 0.001,
+            ease: "power2.out",
+          });
+
+          tl.to(rsvpContent, {
+            duration: 0.05,
+          });
+
+          return () => {
+            tl.kill();
+          };
+        },
+      );
     }, section);
 
     return () => ctx.revert();
@@ -158,7 +181,7 @@ function RSVP() {
         {/* Envelope */}
         <div
           ref={envelopeRef}
-          className="mx-auto w-full max-w-2xl"
+          className="mx-auto w-full"
           style={{
             perspective: "1200px",
           }}
@@ -423,7 +446,8 @@ function RSVP() {
                   absolute
                   bottom-0
                   left-0
-                  h-[50%]
+                  h-[90%]
+                  md:h-[50%]
                   w-full
                   bg-[#d2bca2]
                   shadow-[0_-6px_15px_rgba(0,0,0,0.12)]
@@ -457,9 +481,17 @@ function RSVP() {
             >
               {/* Front of flap */}
               <div
-                className="absolute inset-0 overflow-hidden rounded-t-md"
+                className="
+    absolute
+    inset-0
+    overflow-hidden
+    rounded-t-md
+
+    [clip-path:polygon(0_0,100%_0,83%_30%,17%_30%)]
+
+    md:[clip-path:polygon(0_0,100%_0,53%_100%,47%_100%)]
+  "
                 style={{
-                  clipPath: "polygon(0 0, 100% 0, 53% 100%, 47% 100%)",
                   backfaceVisibility: "hidden",
                 }}
               >
@@ -468,9 +500,17 @@ function RSVP() {
 
               {/* Back of flap */}
               <div
-                className="absolute inset-0 overflow-hidden rounded-b-md after:absolute after:inset-0 after:bg-[url('/paper-noise.jpg')] after:bg-repeat after:bg-[length:300px_300px] after:opacity-[0.12] after:mix-blend-multiply after:pointer-events-none"
+                className="
+    absolute
+    inset-0
+    overflow-hidden
+    rounded-b-md
+
+    [clip-path:polygon(17%_70%,83%_70%,100%_100%,0_100%)]
+
+    md:[clip-path:polygon(47%_0,53%_0,100%_100%,0_100%)]
+  "
                 style={{
-                  clipPath: "polygon(47% 0, 53% 0, 100% 100%, 0 100%)",
                   transform: "rotateX(180deg)",
                   backfaceVisibility: "hidden",
                 }}
