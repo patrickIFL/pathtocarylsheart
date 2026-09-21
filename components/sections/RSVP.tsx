@@ -18,6 +18,7 @@ function RSVP() {
   const flapRef = useRef<HTMLDivElement>(null);
   const invitationRef = useRef<HTMLDivElement>(null);
   const rsvpContentRef = useRef<HTMLDivElement>(null);
+  const stampRef = useRef<HTMLDivElement>(null);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -30,8 +31,16 @@ function RSVP() {
     const flap = flapRef.current;
     const invitation = invitationRef.current;
     const rsvpContent = rsvpContentRef.current;
+    const stamp = stampRef.current;
 
-    if (!section || !envelope || !flap || !invitation || !rsvpContent) {
+    if (
+      !section ||
+      !envelope ||
+      !flap ||
+      !invitation ||
+      !rsvpContent ||
+      !stampRef.current
+    ) {
       return;
     }
 
@@ -95,7 +104,15 @@ function RSVP() {
             ease: "power2.out",
           });
 
-          // 2. Open the flap
+          // 2. Remove the stamp
+          tl.to(stamp, {
+            opacity: 0,
+            scale: 0.85,
+            duration: 0.05,
+            ease: "power2.in",
+          });
+
+          // 3. Open the flap
           tl.to(flap, {
             rotateX: 180,
             duration: 0.2,
@@ -126,7 +143,7 @@ function RSVP() {
             height: 790,
 
             // Mobile
-            width: isMobile ? "98vw" : "97vw",
+            width: isMobile ? "98vw" : "50vw",
 
             // Center on screen
             left: "50%",
@@ -186,30 +203,51 @@ function RSVP() {
             perspective: "1200px",
           }}
         >
-          <div className="relative mx-auto h-[360px] w-full max-w-[600px] rounded-md bg-[#bca894] shadow-[0_25px_50px_rgba(0,0,0,0.30)]">
+          <div className="relative mx-auto h-[370px] w-full max-w-[600px] rounded-md bg-[#bca894] shadow-[0_25px_50px_rgba(0,0,0,0.30)]">
             {/* RSVP paper */}
             <div
               ref={invitationRef}
               className="
-                absolute
-                left-[5%]
-                top-0
-                z-20
-                h-[520px]
-                w-[90%]
-                overflow-hidden
-                rounded-sm
-                bg-[#f2e6d8]
-                px-6
-                py-10
-                text-[#171412]
-                shadow-[0_20px_40px_rgba(0,0,0,0.35)]
-                sm:px-12
-                sm:py-12
-              "
+    absolute
+    left-[5%]
+    top-0
+    z-20
+    h-[520px]
+    w-[90%]
+    overflow-hidden
+    rounded-sm
+    bg-[#f2e6d8]
+    px-6
+    py-10
+    text-[#171412]
+    shadow-[0_20px_40px_rgba(0,0,0,0.35)]
+    sm:px-12
+    sm:py-12
+  "
             >
+              {/* Paper noise */}
+              <img
+                src="/paper-noise.jpg"
+                alt=""
+                aria-hidden="true"
+                className="
+      pointer-events-none
+      absolute
+      inset-0
+      z-0
+      h-full
+      w-full
+      object-cover
+      opacity-[0.12]
+      mix-blend-multiply
+    "
+              />
+
               {/* RSVP Contents */}
-              <div ref={rsvpContentRef} className="h-full overflow-y-auto">
+              <div
+                ref={rsvpContentRef}
+                className="relative z-10 h-full overflow-y-auto"
+              >
                 <div className="mb-8 text-center">
                   <p className="text-xs uppercase tracking-[0.3em] text-[#a58b72]">
                     Kindly Respond
@@ -239,13 +277,13 @@ function RSVP() {
                       placeholder="Enter your full name"
                       required
                       className="
-                        h-11
-                        border-[#d6c5b3]
-                        bg-[#f7eee4]/70
-                        text-[#171412]
-                        placeholder:text-[#9b8b7e]
-                        focus-visible:ring-[#8c7663]
-                      "
+          h-11
+          border-[#d6c5b3]
+          bg-transparent
+          text-[#171412]
+          placeholder:text-[#9b8b7e]
+          focus-visible:ring-[#8c7663]
+        "
                     />
                   </div>
 
@@ -262,13 +300,13 @@ function RSVP() {
                       placeholder="you@example.com"
                       required
                       className="
-                        h-11
-                        border-[#d6c5b3]
-                        bg-[#f7eee4]/70
-                        text-[#171412]
-                        placeholder:text-[#9b8b7e]
-                        focus-visible:ring-[#8c7663]
-                      "
+          h-11
+          border-[#d6c5b3]
+          bg-transparent
+          text-[#171412]
+          placeholder:text-[#9b8b7e]
+          focus-visible:ring-[#8c7663]
+        "
                     />
                   </div>
 
@@ -283,26 +321,24 @@ function RSVP() {
                       name="attendance"
                       required
                       className="
-                        flex
-                        h-11
-                        w-full
-                        rounded-md
-                        border
-                        border-[#d6c5b3]
-                        bg-[#f7eee4]/70
-                        px-3
-                        py-2
-                        text-sm
-                        text-[#171412]
-                        outline-none
-                        focus:ring-2
-                        focus:ring-[#8c7663]
-                      "
+          flex
+          h-11
+          w-full
+          rounded-md
+          border
+          border-[#d6c5b3]
+          bg-transparent
+          px-3
+          py-2
+          text-sm
+          text-[#171412]
+          outline-none
+          focus:ring-2
+          focus:ring-[#8c7663]
+        "
                     >
                       <option value="">Please select</option>
-
                       <option value="yes">Yes, I will be there</option>
-
                       <option value="no">Sorry, I can't make it</option>
                     </select>
                   </div>
@@ -322,12 +358,12 @@ function RSVP() {
                       defaultValue="1"
                       required
                       className="
-                        h-11
-                        border-[#d6c5b3]
-                        bg-[#f7eee4]/70
-                        text-[#171412]
-                        focus-visible:ring-[#8c7663]
-                      "
+          h-11
+          border-[#d6c5b3]
+          bg-transparent
+          text-[#171412]
+          focus-visible:ring-[#8c7663]
+        "
                     />
                   </div>
 
@@ -343,13 +379,13 @@ function RSVP() {
                       placeholder="Any message for the couple?"
                       rows={4}
                       className="
-                        resize-none
-                        border-[#d6c5b3]
-                        bg-[#f7eee4]/70
-                        text-[#171412]
-                        placeholder:text-[#9b8b7e]
-                        focus-visible:ring-[#8c7663]
-                      "
+          resize-none
+          border-[#d6c5b3]
+          bg-transparent
+          text-[#171412]
+          placeholder:text-[#9b8b7e]
+          focus-visible:ring-[#8c7663]
+        "
                     />
                   </div>
 
@@ -362,14 +398,14 @@ function RSVP() {
                   <Button
                     type="submit"
                     className="
-                      h-11
-                      w-full
-                      rounded-full
-                      bg-[#8c7663]
-                      text-white
-                      shadow-[0_8px_20px_rgba(70,50,35,0.20)]
-                      hover:bg-[#756252]
-                    "
+        h-11
+        w-full
+        rounded-full
+        bg-[#8c7663]
+        text-white
+        shadow-[0_8px_20px_rgba(70,50,35,0.20)]
+        hover:bg-[#756252]
+      "
                   >
                     Submit RSVP
                   </Button>
@@ -380,101 +416,126 @@ function RSVP() {
             {/* Envelope inside body */}
             <div
               className="
-                absolute
-                bottom-0
-                left-0
-                z-20
-                h-[360px]
-                w-full
-                overflow-hidden
-                rounded-md
-                
-               
-              "
+    absolute
+    bottom-0
+    left-0
+    z-20
+    h-[360px]
+    w-full
+    overflow-hidden
+    rounded-md
+  "
             >
               {/* Left diagonal */}
               <div
                 className="
-                  absolute
-                  bottom-5
-                  left-0
-                  h-full
-                  w-1/2
-                  bg-[#d9c5ad]
-                  shadow-[8px_8px_20px_rgba(0,0,0,0.18)]
-                  after:absolute
-                  after:inset-0
-                  after:bg-[url('/paper-noise.jpg')]
-                  after:bg-repeat
-                  after:bg-[length:300px_300px]
-                  after:opacity-[0.12]
-                  after:mix-blend-multiply
-                  after:pointer-events-none
-                "
+      absolute
+      bottom-5
+      left-0
+      h-full
+      w-1/2
+      overflow-hidden
+      bg-[#d9c5ad]
+      shadow-[8px_8px_20px_rgba(0,0,0,0.18)]
+    "
                 style={{
                   clipPath: "polygon(0 0, 100% 75%, 0 75%)",
                 }}
-              />
+              >
+                <img
+                  src="/paper-noise.jpg"
+                  alt=""
+                  aria-hidden="true"
+                  className="
+        pointer-events-none
+        absolute
+        inset-0
+        h-full
+        w-full
+        object-cover
+        opacity-[0.12]
+        mix-blend-multiply
+      "
+                />
+              </div>
 
               {/* Right diagonal */}
               <div
                 className="
-                  absolute
-                  bottom-5
-                  right-0
-                  h-full
-                  w-1/2
-                  bg-[#d9c5ad]
-                  shadow-[-8px_8px_20px_rgba(0,0,0,0.18)]
-                  after:absolute
-                  after:inset-0
-                  after:bg-[url('/paper-noise.jpg')]
-                  after:bg-repeat
-                  after:bg-[length:300px_300px]
-                  after:opacity-[0.12]
-                  after:mix-blend-multiply
-                  after:pointer-events-none
-                "
+      absolute
+      bottom-5
+      right-0
+      h-full
+      w-1/2
+      overflow-hidden
+      bg-[#d9c5ad]
+      shadow-[-8px_8px_20px_rgba(0,0,0,0.18)]
+    "
                 style={{
                   clipPath: "polygon(100% 0, 100% 75%, 0 75%)",
                 }}
-              />
+              >
+                <img
+                  src="/paper-noise.jpg"
+                  alt=""
+                  aria-hidden="true"
+                  className="
+        pointer-events-none
+        absolute
+        inset-0
+        h-full
+        w-full
+        object-cover
+        opacity-[0.12]
+        mix-blend-multiply
+      "
+                />
+              </div>
 
               {/* Bottom envelope */}
               <div
                 className="
-                  absolute
-                  bottom-0
-                  left-0
-                  h-[90%]
-                  md:h-[50%]
-                  w-full
-                  bg-[#d2bca2]
-                  shadow-[0_-6px_15px_rgba(0,0,0,0.12)]
-                  after:absolute
-                  after:inset-0
-                  after:bg-[url('/paper-noise.jpg')]
-                  after:bg-repeat
-                  after:bg-[length:300px_300px]
-                  after:opacity-[0.12]
-                  after:mix-blend-multiply
-                  after:pointer-events-none
-                "
-              />
+      absolute
+      bottom-0
+      left-0
+      h-[90%]
+      w-full
+      overflow-hidden
+      bg-[#d2bca2]
+      shadow-[0_-6px_15px_rgba(0,0,0,0.12)]
+      md:h-[50%]
+    "
+              >
+                <img
+                  src="/paper-noise.jpg"
+                  alt=""
+                  aria-hidden="true"
+                  className="
+        pointer-events-none
+        absolute
+        inset-0
+        h-full
+        w-full
+        object-cover
+        opacity-[0.12]
+        mix-blend-multiply
+      "
+                />
+              </div>
             </div>
 
             {/* Envelope flap */}
             <div
               ref={flapRef}
               className="
-                absolute
-                left-0
-                top-0
-                z-40
-                h-[260px]
-                w-full
-                origin-top
-              "
+    absolute
+    left-0
+    top-0
+    z-40
+    h-[260px]
+    w-full
+    origin-top
+  "
               style={{
                 transformStyle: "preserve-3d",
               }}
@@ -482,40 +543,118 @@ function RSVP() {
               {/* Front of flap */}
               <div
                 className="
-    absolute
-    inset-0
-    overflow-hidden
-    rounded-t-md
-
-    [clip-path:polygon(0_0,100%_0,83%_30%,17%_30%)]
-
-    md:[clip-path:polygon(0_0,100%_0,53%_100%,47%_100%)]
-  "
+      absolute
+      inset-0
+      overflow-hidden
+      rounded-t-md
+      [clip-path:polygon(0_0,100%_0,83%_30%,17%_30%)]
+      md:[clip-path:polygon(0_0,100%_0,53%_100%,47%_100%)]
+    "
                 style={{
                   backfaceVisibility: "hidden",
                 }}
               >
-                <div className="absolute inset-0 bg-[#cdb496] after:absolute after:inset-0 after:bg-[url('/paper-noise.jpg')] after:bg-repeat after:bg-[length:300px_300px] after:opacity-[0.12] after:mix-blend-multiply after:pointer-events-none" />
+                <div className="absolute inset-0 bg-[#cdb496]" />
+
+                <img
+                  src="/paper-noise.jpg"
+                  alt=""
+                  aria-hidden="true"
+                  className="
+        pointer-events-none
+        absolute
+        inset-0
+        h-full
+        w-full
+        object-cover
+        opacity-[0.12]
+        mix-blend-multiply
+      "
+                />
               </div>
 
               {/* Back of flap */}
               <div
                 className="
-    absolute
-    inset-0
-    overflow-hidden
-    rounded-b-md
-
-    [clip-path:polygon(17%_70%,83%_70%,100%_100%,0_100%)]
-
-    md:[clip-path:polygon(47%_0,53%_0,100%_100%,0_100%)]
-  "
+      absolute
+      inset-0
+      overflow-hidden
+      rounded-b-md
+      [clip-path:polygon(17%_70%,83%_70%,100%_100%,0_100%)]
+      md:[clip-path:polygon(47%_0,53%_0,100%_100%,0_100%)]
+    "
                 style={{
                   transform: "rotateX(180deg)",
                   backfaceVisibility: "hidden",
                 }}
               >
                 <div className="absolute inset-0 bg-[#c8b8a8]" />
+
+                <img
+                  src="/paper-noise.jpg"
+                  alt=""
+                  aria-hidden="true"
+                  className="
+        pointer-events-none
+        absolute
+        inset-0
+        h-full
+        w-full
+        object-cover
+        opacity-[0.12]
+        mix-blend-multiply
+      "
+                />
+              </div>
+            </div>
+
+            {/* Wax seal */}
+            <div
+              ref={stampRef}
+              className="
+    absolute
+    left-1/2
+    top-[18%]
+    md:top-1/2
+    z-50
+    flex
+    h-20
+    w-20
+    -translate-x-1/2
+    -translate-y-1/2
+    rotate-[-8deg]
+    items-center
+    justify-center
+    rounded-full
+    bg-[#70403d]
+    text-[#e8d6c8]
+    shadow-[0_5px_12px_rgba(50,25,20,0.35),inset_2px_2px_5px_rgba(255,255,255,0.18),inset_-3px_-4px_7px_rgba(40,15,15,0.35)]
+  "
+            >
+              <div
+                className="
+      flex
+      h-14
+      w-14
+      items-center
+      justify-center
+      rounded-full
+      border
+      border-[#c59b8d]/50
+      shadow-[inset_1px_1px_3px_rgba(255,255,255,0.12),inset_-2px_-2px_4px_rgba(40,15,15,0.25)]
+    "
+              >
+                <span
+                  className="
+        font-serif
+        text-lg
+        font-semibold
+        tracking-wider
+        drop-shadow-[1px_1px_1px_rgba(40,15,15,0.45)]
+      "
+                >
+                  P&C
+                </span>
               </div>
             </div>
           </div>
