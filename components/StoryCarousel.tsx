@@ -7,11 +7,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const images = [
-  "/story/photo-1.jpg",
-  "/story/photo-2.jpg",
-  "/story/photo-3.jpg",
-  "/story/photo-4.jpg",
-  "/story/photo-5.jpg",
+  "https://res.cloudinary.com/dbav6z7re/image/upload/v1789970208/PATRICK_AND_CARYL_PRENUP_EDITED-194_npogel.jpg",
+  "https://res.cloudinary.com/dbav6z7re/image/upload/v1789970208/PATRICK_AND_CARYL_PRENUP_EDITED-194_npogel.jpg",
+  "https://res.cloudinary.com/dbav6z7re/image/upload/v1789970208/PATRICK_AND_CARYL_PRENUP_EDITED-194_npogel.jpg",
+  "https://res.cloudinary.com/dbav6z7re/image/upload/v1789970208/PATRICK_AND_CARYL_PRENUP_EDITED-194_npogel.jpg",
+  "https://res.cloudinary.com/dbav6z7re/image/upload/v1789970208/PATRICK_AND_CARYL_PRENUP_EDITED-194_npogel.jpg",
 ];
 
 function StoryCarousel() {
@@ -54,7 +54,7 @@ function StoryCarousel() {
       <div ref={trackRef} className="flex h-full w-max items-center gap-6 px-6">
         {images.map((image, index) => (
           <div
-            key={image}
+            key={index}
             className="relative h-[70vh] w-[75vw] shrink-0 overflow-hidden rounded-2xl sm:h-[75vh] sm:w-[55vw] lg:w-[42vw]"
           >
             <img

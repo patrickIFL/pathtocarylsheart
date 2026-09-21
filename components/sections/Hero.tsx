@@ -39,7 +39,8 @@ function Hero() {
         ref={heroImageRef}
         className="absolute inset-0 scale-100 bg-cover bg-center"
         style={{
-          backgroundImage: "url('/hero.jpg')",
+          backgroundImage:
+            "url('https://res.cloudinary.com/dbav6z7re/image/upload/v1789970137/PATRICK_AND_CARYL_PRENUP_EDITED-144_jlwigb.jpg')",
         }}
       />
 
