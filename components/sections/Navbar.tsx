@@ -95,28 +95,7 @@ function Navbar() {
           }`}
         >
           <AnimatePresence mode="wait" initial={false}>
-            <motion.span
-              key={scrolled ? "confirm" : "rsvp"}
-              initial={{
-                opacity: 0,
-                y: 10,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              exit={{
-                opacity: 0,
-                y: -10,
-              }}
-              transition={{
-                duration: 0.25,
-                ease: "easeOut",
-              }}
-              className="whitespace-nowrap"
-            >
-              {"RSVP"}
-            </motion.span>
+            <span className="whitespace-nowrap">{"RSVP"}</span>
           </AnimatePresence>
         </motion.a>
       </div>
