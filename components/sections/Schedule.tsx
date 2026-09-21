@@ -28,12 +28,13 @@ function Schedule() {
       // Initial states
       gsap.set(envelope, {
         opacity: 0,
-        y: 80,
+        y: 30,
       });
 
       // Invitation starts just inside the envelope
       gsap.set(invitation, {
         y: 40,
+        height: 300,
         zIndex: 20,
       });
 
@@ -53,9 +54,12 @@ function Schedule() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
-          start: "top 65%",
-          end: "center center",
+          start: "top top",
+          end: "+=1800",
           scrub: 1,
+          pin: true,
+          pinSpacing: true,
+          anticipatePin: 1,
         },
       });
 
@@ -63,20 +67,16 @@ function Schedule() {
       tl.to(envelope, {
         opacity: 1,
         y: 0,
-        duration: 0.8,
+        duration: 0.1,
         ease: "power2.out",
       });
 
       // 2. Open the flap
-      tl.to(
-        flap,
-        {
-          rotateX: 180,
-          duration: 1.2,
-          ease: "power2.inOut",
-        },
-        "-=0.1",
-      );
+      tl.to(flap, {
+        rotateX: 180,
+        duration: 0.2,
+        ease: "power2.inOut",
+      });
 
       // 3. Put opened flap behind the envelope
       tl.set(flap, {
@@ -85,15 +85,12 @@ function Schedule() {
 
       // 4. Invitation begins emerging
       // Still behind the envelope body
-      tl.to(
-        invitation,
-        {
-          y: -500,
-          duration: 2.5,
-          ease: "power2.out",
-        },
-        "+=0.1",
-      );
+      tl.to(invitation, {
+        y: -550,
+        height: 590,
+        duration: 0.1,
+        ease: "power2.out",
+      });
 
       // 5. Once it clears the envelope,
       // bring it above the envelope body
@@ -103,22 +100,18 @@ function Schedule() {
 
       // 6. Quickly finish the movement
       tl.to(invitation, {
-        y: -250,
-        duration: 0.5,
+        y: -220,
+        duration: 0.1,
         ease: "power3.out",
       });
 
       // 7. Reveal the schedule
-      tl.to(
-        scheduleContent,
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-        },
-        "-=0.4",
-      );
+      tl.to(scheduleContent, {
+        opacity: 1,
+        y: 0,
+        duration: 0.1,
+        ease: "power2.out",
+      });
     }, section);
 
     return () => ctx.revert();
@@ -128,7 +121,7 @@ function Schedule() {
     <section
       ref={sectionRef}
       id="schedule"
-      className="scroll-mt-20 bg-[#171412] px-6 py-32 text-white"
+      className="relative min-h-screen bg-[#171412] px-6 py-32 text-white"
     >
       <div className="mx-auto max-w-4xl">
         {/* Heading */}
@@ -150,7 +143,7 @@ function Schedule() {
             perspective: "1200px",
           }}
         >
-          <div className="relative mx-auto h-[360px] w-full max-w-[600px]">
+          <div className="relative mx-auto h-[360px] w-full max-w-[600px] bg-purple-500 rounded-2xl">
             {/* Invitation paper content*/}
             <div
               ref={invitationRef}
@@ -246,25 +239,23 @@ function Schedule() {
             {/* Envelope inside body #d8c8b9*/}
             <div
               className="
-                absolute
-                bottom-0
-                left-0
-                z-20
-                h-[360px]
-                w-full
-                overflow-hidden
-                rounded-b-2xl
-                
-                shadow-2xl
-                shadow-black/40
-              "
+  absolute
+  bottom-0
+  left-0
+  z-20
+  h-[360px]
+  w-full
+  overflow-hidden
+  rounded-2xl
+  
+"
             >
               {/* Left diagonal #cdbbaa*/}
               {/* Left diagonal */}
               <div
                 className="
     absolute
-    bottom-0
+    bottom-5
     left-0
     h-full
     w-1/2
@@ -279,7 +270,7 @@ function Schedule() {
               <div
                 className="
     absolute
-    bottom-0
+    bottom-5
     right-0
     h-full
     w-1/2
@@ -296,7 +287,7 @@ function Schedule() {
     absolute
     bottom-0
     left-0
-    h-[25%]
+    h-[35%]
     w-full
     bg-purple-500
   "
@@ -319,24 +310,28 @@ function Schedule() {
                 transformStyle: "preserve-3d",
               }}
             >
-              {/* Front of flap #e0d1c2 flap is closed */}
+              {/* Front of flap */}
               <div
-                className="absolute inset-0 bg-red-500"
+                className="absolute inset-0 overflow-hidden rounded-t-2xl"
                 style={{
                   clipPath: "polygon(0 0, 100% 0, 50% 100%)",
                   backfaceVisibility: "hidden",
                 }}
-              />
+              >
+                <div className="absolute inset-0 bg-red-500" />
+              </div>
 
-              {/* Back of flap cdbbaa flap is opened */}
+              {/* Back of flap */}
               <div
-                className="absolute inset-0 bg-blue-500"
+                className="absolute inset-0 overflow-hidden rounded-b-2xl"
                 style={{
                   clipPath: "polygon(0 100%, 100% 100%, 50% 0)",
                   transform: "rotateX(180deg)",
                   backfaceVisibility: "hidden",
                 }}
-              />
+              >
+                <div className="absolute inset-0 bg-blue-500" />
+              </div>
             </div>
           </div>
         </div>
