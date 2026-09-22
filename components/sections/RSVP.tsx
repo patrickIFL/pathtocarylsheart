@@ -245,6 +245,7 @@ function RSVP() {
                   z-20
                   h-[520px]
                   w-[90%]
+                  overflow-hidden
                   rounded-sm
                   bg-[#f2e6d8]
                   px-6
