@@ -159,7 +159,7 @@ function RSVP() {
       height: 790,
 
       // Mobile / Desktop width
-      width: isMobile ? "90vw" : "60vw",
+      width: isMobile ? "98vw" : "60vw",
 
       // Center horizontally on screen
       left: "50%",
@@ -194,7 +194,7 @@ function RSVP() {
       const isMobile = window.innerWidth < 640;
 
       gsap.set(invitation, {
-        width: isMobile ? "98vw" : "50vw",
+        width: isMobile ? "98vw" : "60vw",
         left: "50%",
         xPercent: -50,
       });
