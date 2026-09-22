@@ -40,6 +40,22 @@ function Navbar() {
     },
   ];
 
+  const handleNavigation = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    event.preventDefault();
+
+    const target = document.querySelector(href);
+
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <motion.nav
       initial={{ y: -20, opacity: 0 }}
@@ -59,6 +75,7 @@ function Navbar() {
         {/* Logo */}
         <motion.a
           href="#home"
+          onClick={(event) => handleNavigation(event, "#home")}
           whileHover={{ opacity: 0.75 }}
           className="font-serif text-xl tracking-wide text-white"
         >
@@ -71,6 +88,7 @@ function Navbar() {
             <motion.a
               key={link.href}
               href={link.href}
+              onClick={(event) => handleNavigation(event, link.href)}
               whileHover={{ y: -1 }}
               className="text-sm text-white/85 transition-colors hover:text-white"
             >
@@ -82,6 +100,7 @@ function Navbar() {
         {/* CTA */}
         <motion.a
           href="#rsvp"
+          onClick={(event) => handleNavigation(event, "#rsvp")}
           whileHover={{
             scale: 1.05,
           }}
@@ -95,7 +114,7 @@ function Navbar() {
           }`}
         >
           <AnimatePresence mode="wait" initial={false}>
-            <span className="whitespace-nowrap">{"RSVP"}</span>
+            <span className="whitespace-nowrap">RSVP</span>
           </AnimatePresence>
         </motion.a>
       </div>
