@@ -7,33 +7,8 @@ import WhereAndWhen from "@/components/sections/WhereAndWhen";
 import Schedule from "@/components/sections/Schedule";
 import RSVP from "@/components/sections/RSVP";
 import Footer from "@/components/sections/Footer";
-import { useEffect } from "react";
-import Lenis from "lenis";
 
 export default function Home() {
-  // -- todo: add smooth
-
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      smoothWheel: true,
-    });
-
-    let animationFrame: number;
-
-    function raf(time: number) {
-      lenis.raf(time);
-      animationFrame = requestAnimationFrame(raf);
-    }
-
-    animationFrame = requestAnimationFrame(raf);
-
-    return () => {
-      cancelAnimationFrame(animationFrame);
-      lenis.destroy();
-    };
-  }, []);
-
   return (
     <main className="min-h-screen bg-[#faf9f6] text-[#3f3a35]">
       {/* Navbar */}

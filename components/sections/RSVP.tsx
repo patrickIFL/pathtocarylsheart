@@ -1,6 +1,12 @@
 "use client";
 
-import React, { FormEvent, useLayoutEffect, useRef, useState } from "react";
+import React, {
+  FormEvent,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import gsap from "gsap";
 
 import { Label } from "../ui/label";
@@ -17,6 +23,7 @@ function RSVP() {
   const invitationRef = useRef<HTMLDivElement>(null);
   const rsvpContentRef = useRef<HTMLDivElement>(null);
   const stampRef = useRef<HTMLButtonElement>(null);
+  const invitationOpenedRef = useRef(false);
 
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
@@ -106,6 +113,8 @@ function RSVP() {
 
     const isMobile = window.innerWidth < 640;
 
+    invitationOpenedRef.current = true;
+
     const tl = gsap.timeline();
 
     timelineRef.current = tl;
@@ -150,7 +159,7 @@ function RSVP() {
       height: 790,
 
       // Mobile / Desktop width
-      width: isMobile ? "98vw" : "50vw",
+      width: isMobile ? "90vw" : "60vw",
 
       // Center horizontally on screen
       left: "50%",
@@ -169,6 +178,35 @@ function RSVP() {
     });
   }
 
+  useEffect(() => {
+    const invitation = invitationRef.current;
+
+    if (!invitation) {
+      return;
+    }
+
+    const handleResize = () => {
+      // Only resize the paper after it has been opened.
+      if (!invitationOpenedRef.current) {
+        return;
+      }
+
+      const isMobile = window.innerWidth < 640;
+
+      gsap.set(invitation, {
+        width: isMobile ? "98vw" : "50vw",
+        left: "50%",
+        xPercent: -50,
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <section
       ref={sectionRef}
@@ -178,12 +216,10 @@ function RSVP() {
       <div className="mx-auto max-w-4xl">
         {/* Heading */}
         <div className="mb-16 text-center">
-          <p className="text-sm uppercase tracking-[0.35em] text-white/40">
-            Kindly Respond
-          </p>
+          <p className="mt-4 text-sm text-white/50">Click the seal to open</p>
 
           <h2 className="mt-5 font-serif text-4xl sm:text-5xl">
-            Will you join us?
+            Your Invitation
           </h2>
 
           <div className="mx-auto mt-8 h-px w-16 bg-white/25" />
@@ -209,7 +245,6 @@ function RSVP() {
                   z-20
                   h-[520px]
                   w-[90%]
-                  overflow-hidden
                   rounded-sm
                   bg-[#f2e6d8]
                   px-6
