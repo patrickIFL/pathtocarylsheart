@@ -10,8 +10,8 @@ const images = [
   "https://res.cloudinary.com/dbav6z7re/image/upload/v1790614598/d3a754d2-ef29-4e28-aa8c-cab4c7352d80_ztg4pp.jpg",
   "https://res.cloudinary.com/dbav6z7re/image/upload/v1789970208/PATRICK_AND_CARYL_PRENUP_EDITED-194_npogel.jpg",
   "https://res.cloudinary.com/dbav6z7re/image/upload/v1790623819/PATRICK_AND_CARYL_PRENUP_EDITED-2_tvtqj9.jpg",
-  "https://res.cloudinary.com/dbav6z7re/image/upload/v1790625849/12d649c0-b223-4d66-9e93-d78d444f80a0_izcdc0.jpg",
-  "https://res.cloudinary.com/dbav6z7re/image/upload/v1790626020/c66351ca-b0c5-49c6-836c-6ee6c77161f6_lsp1q1.jpg",
+  "https://res.cloudinary.com/dbav6z7re/image/upload/v1790626840/12d649c0-b223-4d66-9e93-d78d444f80a0_uioqhl.jpg",
+  "https://res.cloudinary.com/dbav6z7re/image/upload/v1790626859/PATRICK_AND_CARYL_PRENUP_EDITED-336_yzpqap.jpg",
 ];
 
 function StoryCarousel() {
