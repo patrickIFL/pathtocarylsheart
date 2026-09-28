@@ -7,6 +7,7 @@ import WhereAndWhen from "@/components/sections/WhereAndWhen";
 import Schedule from "@/components/sections/Schedule";
 import RSVP from "@/components/sections/RSVP";
 import Footer from "@/components/sections/Footer";
+import StoryCarousel from "@/components/StoryCarousel";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
 
       {/* Story Section */}
       <Story />
+      <StoryCarousel />
 
       {/* Where & When & Dress Code */}
       <WhereAndWhen />

@@ -24,7 +24,7 @@ function WhereAndWhen() {
       description: "Saturday",
       icon: CalendarDays,
       image:
-        "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80",
+        "https://res.cloudinary.com/dbav6z7re/image/upload/v1790607962/calendar_jue3fn.png",
       details:
         "Join us on Saturday, November 14, 2026 as we celebrate this special day together.",
     },
@@ -62,16 +62,16 @@ function WhereAndWhen() {
         },
       ],
     },
-    {
-      label: "Gift Guide",
-      title: "Monetary",
-      description: "Money only",
-      icon: Gift,
-      image:
-        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
-      details:
-        "Your presence is already a gift to us. For those who would like to give something, monetary gifts are warmly appreciated.",
-    },
+    // {
+    //   label: "Gift Guide",
+    //   title: "Monetary",
+    //   description: "Money only",
+    //   icon: Gift,
+    //   image:
+    //     "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+    //   details:
+    //     "Your presence is already a gift to us. For those who would like to give something, monetary gifts are warmly appreciated.",
+    // },
   ];
 
   return (
@@ -101,7 +101,7 @@ function WhereAndWhen() {
           </motion.div>
 
           {/* Cards */}
-          <div className="grid gap-6 md:grid-cols-4">
+          <div className="grid gap-6 md:grid-cols-3">
             {details.map((detail, index) => {
               const Icon = detail.icon;
 
@@ -186,8 +186,8 @@ function WhereAndWhen() {
                             key={color.name}
                             title={color.name}
                             className="
-                              h-9
-                              w-9
+                              h-5
+                              w-5
                               rounded-full
                               border
                               border-[#d8cabb]
