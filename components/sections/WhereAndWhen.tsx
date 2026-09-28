@@ -24,7 +24,7 @@ function WhereAndWhen() {
       description: "Saturday",
       icon: CalendarDays,
       image:
-        "https://res.cloudinary.com/dbav6z7re/image/upload/v1790607962/calendar_jue3fn.png",
+        "https://res.cloudinary.com/dbav6z7re/image/upload/v1790622919/calendar_without_head_gk2vri.png",
       details:
         "Join us on Saturday, November 14, 2026 as we celebrate this special day together.",
     },
@@ -254,15 +254,21 @@ function WhereAndWhen() {
 
               {/* Image */}
               {selectedDetail.image && (
-                <div className="mt-4 overflow-hidden rounded-xl">
+                <div
+                  className={
+                    selectedDetail.label === "When"
+                      ? "mt-4 flex justify-center"
+                      : "mt-4 overflow-hidden rounded-xl"
+                  }
+                >
                   <img
                     src={selectedDetail.image}
                     alt={selectedDetail.title}
-                    className="
-                      h-56
-                      w-full
-                      object-cover
-                    "
+                    className={
+                      selectedDetail.label === "When"
+                        ? "h-auto w-auto max-w-full"
+                        : "h-56 w-full object-cover"
+                    }
                   />
                 </div>
               )}

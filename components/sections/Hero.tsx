@@ -37,10 +37,10 @@ function Hero() {
       {/* Background Image */}
       <div
         ref={heroImageRef}
-        className="absolute inset-0 scale-100 bg-cover bg-[75%_center] md:bg-center"
+        className="absolute inset-0 scale-100 bg-cover bg-[35%_center] md:bg-center"
         style={{
           backgroundImage:
-            "url('https://res.cloudinary.com/dbav6z7re/image/upload/v1789970137/PATRICK_AND_CARYL_PRENUP_EDITED-144_jlwigb.jpg')",
+            "url('https://res.cloudinary.com/dbav6z7re/image/upload/v1790624270/PATRICK_AND_CARYL_PRENUP_EDITED-316_tkskj5.jpg')",
         }}
       />
 
