@@ -42,11 +42,11 @@ function WhereAndWhen() {
     },
     {
       label: "Dress Code",
-      title: "Semi-Formal",
-      description: "Elegant and comfortable",
+      title: "Pastel Colors",
+      description: "Semi-Formal",
       icon: Shirt,
-      details:
-        "We kindly ask our guests to dress in semi-formal attire. Elegant, comfortable, and celebration-ready is the look we're going for.",
+      image:
+        "https://res.cloudinary.com/dbav6z7re/image/upload/v1790613522/dress_code_example_xnu93s.png",
       colors: [
         {
           name: "Blush Pink",
@@ -62,16 +62,16 @@ function WhereAndWhen() {
         },
       ],
     },
-    // {
-    //   label: "Gift Guide",
-    //   title: "Monetary",
-    //   description: "Money only",
-    //   icon: Gift,
-    //   image:
-    //     "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
-    //   details:
-    //     "Your presence is already a gift to us. For those who would like to give something, monetary gifts are warmly appreciated.",
-    // },
+    {
+      label: "Gift Guide",
+      title: "Monetary",
+      description: "Warm Blessings",
+      icon: Gift,
+      image:
+        "https://res.cloudinary.com/dbav6z7re/image/upload/v1790612555/qr2_vplsk0.png",
+      details:
+        "Your presence is already a gift to us. For those who would like to give something, monetary gifts are warmly appreciated.",
+    },
   ];
 
   return (
@@ -101,7 +101,7 @@ function WhereAndWhen() {
           </motion.div>
 
           {/* Cards */}
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-4">
             {details.map((detail, index) => {
               const Icon = detail.icon;
 
@@ -308,7 +308,7 @@ function WhereAndWhen() {
 
                 {/* Dress code colors */}
                 {selectedDetail.colors && (
-                  <div className="mt-8">
+                  <div className="">
                     <p className="mb-4 text-center text-xs uppercase tracking-[0.3em] text-[#a58b72]">
                       Suggested Colors
                     </p>

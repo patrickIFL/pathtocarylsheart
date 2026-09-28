@@ -7,11 +7,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const images = [
-  "https://res.cloudinary.com/dbav6z7re/image/upload/v1789970208/PATRICK_AND_CARYL_PRENUP_EDITED-194_npogel.jpg",
-  "https://res.cloudinary.com/dbav6z7re/image/upload/v1789970208/PATRICK_AND_CARYL_PRENUP_EDITED-194_npogel.jpg",
-  "https://res.cloudinary.com/dbav6z7re/image/upload/v1789970208/PATRICK_AND_CARYL_PRENUP_EDITED-194_npogel.jpg",
-  "https://res.cloudinary.com/dbav6z7re/image/upload/v1789970208/PATRICK_AND_CARYL_PRENUP_EDITED-194_npogel.jpg",
-  "https://res.cloudinary.com/dbav6z7re/image/upload/v1789970208/PATRICK_AND_CARYL_PRENUP_EDITED-194_npogel.jpg",
+  "https://res.cloudinary.com/dbav6z7re/image/upload/v1790614598/d3a754d2-ef29-4e28-aa8c-cab4c7352d80_ztg4pp.jpg",
+  "https://res.cloudinary.com/dbav6z7re/image/upload/v1790614598/d3a754d2-ef29-4e28-aa8c-cab4c7352d80_ztg4pp.jpg",
+  "https://res.cloudinary.com/dbav6z7re/image/upload/v1790614598/d3a754d2-ef29-4e28-aa8c-cab4c7352d80_ztg4pp.jpg",
+  "https://res.cloudinary.com/dbav6z7re/image/upload/v1790614598/d3a754d2-ef29-4e28-aa8c-cab4c7352d80_ztg4pp.jpg",
+  "https://res.cloudinary.com/dbav6z7re/image/upload/v1790614598/d3a754d2-ef29-4e28-aa8c-cab4c7352d80_ztg4pp.jpg",
 ];
 
 function StoryCarousel() {

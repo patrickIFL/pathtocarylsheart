@@ -8,6 +8,7 @@ import Schedule from "@/components/sections/Schedule";
 import RSVP from "@/components/sections/RSVP";
 import Footer from "@/components/sections/Footer";
 import StoryCarousel from "@/components/StoryCarousel";
+import Countdown from "@/components/sections/Countdown";
 
 export default function Home() {
   return (
@@ -17,6 +18,8 @@ export default function Home() {
 
       {/* Hero Section */}
       <Hero />
+
+      <Countdown />
 
       {/* Story Section */}
       <Story />
