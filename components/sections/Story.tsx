@@ -47,7 +47,7 @@ function Story() {
       rotate: -5,
     },
     {
-      src: " https://res.cloudinary.com/dbav6z7re/image/upload/v1790614451/6dbafe84-6836-407b-a625-cfcd159b9186_w48gyh.jpg",
+      src: "https://res.cloudinary.com/dbav6z7re/image/upload/v1790614451/6dbafe84-6836-407b-a625-cfcd159b9186_w48gyh.jpg",
       alt: "Day of proposal",
       top: "74%",
       right: "-9%",
