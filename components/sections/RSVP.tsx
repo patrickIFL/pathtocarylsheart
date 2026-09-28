@@ -1,5 +1,27 @@
 "use client";
 
+/* 
+https://docs.google.com/forms/d/e/1FAIpQLSfl9bOPaizC4P-gtO9fnqbNE2W_MKyDo4aicsVvF96vNTxxqg/viewform?usp=publish-editor
+
+google forms
+
+edittor link:
+https://docs.google.com/forms/d/1EJZD4iG1oIahF0m_XU85we7CvEE9fo71fboY1ZlnsOI/edit
+
+responder link:
+https://docs.google.com/forms/d/e/1FAIpQLSfl9bOPaizC4P-gtO9fnqbNE2W_MKyDo4aicsVvF96vNTxxqg/viewform?usp=header
+
+input field mapping:
+fullname:                 entry.2064952522
+email:                    entry.2141666687
+will you be attending:    entry.1568948851
+number of guests:         entry.1720588372
+message:                  entry.884402531
+
+form's post endpoint:
+https://docs.google.com/forms/u/0/d/e/1FAIpQLSfl9bOPaizC4P-gtO9fnqbNE2W_MKyDo4aicsVvF96vNTxxqg/formResponse
+
+*/
 import React, {
   FormEvent,
   useEffect,
@@ -27,9 +49,42 @@ function RSVP() {
 
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSubmitted(true);
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const data = new URLSearchParams();
+
+    data.append("entry.2064952522", formData.get("name")?.toString() ?? "");
+
+    data.append("entry.2141666687", formData.get("email")?.toString() ?? "");
+
+    data.append(
+      "entry.1568948851",
+      formData.get("attendance")?.toString() ?? "",
+    );
+
+    data.append("entry.1720588372", formData.get("guests")?.toString() ?? "");
+
+    data.append("entry.884402531", formData.get("message")?.toString() ?? "");
+
+    try {
+      await fetch(
+        "https://docs.google.com/forms/d/e/1FAIpQLSfl9bOPaizC4P-gtO9fnqbNE2W_MKyDo4aicsVvF96vNTxxqg/formResponse",
+        {
+          method: "POST",
+          mode: "no-cors",
+          body: data,
+        },
+      );
+
+      setSubmitted(true);
+      form.reset();
+    } catch (error) {
+      console.error("RSVP submission failed:", error);
+    }
   }
 
   useLayoutEffect(() => {
@@ -369,8 +424,13 @@ function RSVP() {
                         "
                       >
                         <option value="">Please select</option>
-                        <option value="yes">Yes, I will be there</option>
-                        <option value="no">Sorry, I can't make it</option>
+                        <option value="Yes, I will be there">
+                          Yes, I will be there
+                        </option>
+
+                        <option value="Sorry, I can't make it">
+                          Sorry, I can't make it
+                        </option>
                       </select>
                     </div>
 
