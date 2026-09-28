@@ -38,6 +38,8 @@ import { Textarea } from "../ui/textarea";
 
 function RSVP() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const sectionRef = useRef<HTMLElement>(null);
   const envelopeRef = useRef<HTMLDivElement>(null);
@@ -54,36 +56,40 @@ function RSVP() {
 
     const form = event.currentTarget;
     const formData = new FormData(form);
+    const payload = {
+      name: formData.get("name")?.toString() ?? "",
+      email: formData.get("email")?.toString() ?? "",
+      attendance: formData.get("attendance")?.toString() ?? "",
+      guests: formData.get("guests")?.toString() ?? "",
+      message: formData.get("message")?.toString() ?? "",
+    };
 
-    const data = new URLSearchParams();
-
-    data.append("entry.2064952522", formData.get("name")?.toString() ?? "");
-
-    data.append("entry.2141666687", formData.get("email")?.toString() ?? "");
-
-    data.append(
-      "entry.1568948851",
-      formData.get("attendance")?.toString() ?? "",
-    );
-
-    data.append("entry.1720588372", formData.get("guests")?.toString() ?? "");
-
-    data.append("entry.884402531", formData.get("message")?.toString() ?? "");
+    setIsSubmitting(true);
+    setSubmitError("");
 
     try {
-      await fetch(
-        "https://docs.google.com/forms/d/e/1FAIpQLSfl9bOPaizC4P-gtO9fnqbNE2W_MKyDo4aicsVvF96vNTxxqg/formResponse",
-        {
-          method: "POST",
-          mode: "no-cors",
-          body: data,
+      const response = await fetch("/api/rsvp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error("RSVP submission failed");
+      }
 
       setSubmitted(true);
       form.reset();
     } catch (error) {
-      console.error("RSVP submission failed:", error);
+      setSubmitted(false);
+      setSubmitError(
+        "We couldn’t send your RSVP right now. Please try again in a moment.",
+      );
+      console.error("RSVP submission error:", error);
+    } finally {
+      setIsSubmitting(false);
     }
   }
 
@@ -486,8 +492,15 @@ function RSVP() {
                       </div>
                     )}
 
+                    {submitError && (
+                      <div className="rounded-md border border-red-200 bg-red-50 p-4 text-center text-sm text-red-700">
+                        {submitError}
+                      </div>
+                    )}
+
                     <Button
                       type="submit"
+                      disabled={isSubmitting}
                       className="
                         h-11
                         w-full
@@ -496,9 +509,11 @@ function RSVP() {
                         text-white
                         shadow-[0_8px_20px_rgba(70,50,35,0.20)]
                         hover:bg-[#756252]
+                        disabled:cursor-not-allowed
+                        disabled:opacity-70
                       "
                     >
-                      Submit RSVP
+                      {isSubmitting ? "Sending..." : "Submit RSVP"}
                     </Button>
                   </form>
                 </div>
