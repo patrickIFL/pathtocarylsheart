@@ -68,7 +68,7 @@ function Schedule() {
               </p>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-6 text-center">
               <div>
                 <h3 className="font-serif text-lg">No Plus-Ones</h3>
 
