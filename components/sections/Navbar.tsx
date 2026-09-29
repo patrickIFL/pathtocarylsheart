@@ -60,9 +60,9 @@ function Navbar() {
         <motion.a
           href="#home"
           whileHover={{ opacity: 0.75 }}
-          className="font-serif text-xl tracking-wide text-white"
+          // className="font-serif text-xl tracking-wide text-white"
         >
-          P & C
+          <img src={"/P&C.png"} alt="logoimg" className="h-7" />
         </motion.a>
 
         {/* Desktop Navigation */}

@@ -1,104 +1,60 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-const GOOGLE_APPS_SCRIPT_URL = process.env.GOOGLE_APPS_SCRIPT_URL;
+const GOOGLE_APPS_SCRIPT_URL = process.env.GOOGLE_APPS_SCRIPT_URL!;
 
-export async function POST(request: NextRequest) {
+export async function POST(request: Request) {
   try {
-    const body = await request.json();
+    const payload = await request.json();
 
-    const values = {
-      name: String(body.name ?? "").trim(),
-      email: String(body.email ?? "").trim(),
-      attendance: String(body.attendance ?? "").trim(),
-      guests: String(body.guests ?? "").trim(),
-      message: String(body.message ?? "").trim(),
-    };
-
-    if (!values.name || !values.email || !values.attendance || !values.guests) {
-      return NextResponse.json(
-        { error: "Missing required RSVP fields." },
-        { status: 400 },
-      );
-    }
-
-    if (!GOOGLE_APPS_SCRIPT_URL) {
-      return NextResponse.json(
-        {
-          error:
-            "Google Apps Script endpoint is not configured. Set GOOGLE_APPS_SCRIPT_URL in your environment.",
-        },
-        { status: 500 },
-      );
-    }
-
-    const scriptResponse = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+    const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        ...values,
-        submittedAt: new Date().toISOString(),
+        name: payload.name,
+        email: payload.email,
+        attendance: payload.attendance,
+        guests: payload.guests,
+        message: payload.message,
       }),
+      cache: "no-store",
     });
 
-    const responseText = await scriptResponse.text();
+    const text = await response.text();
 
-    console.log("Google Apps Script HTTP status:", scriptResponse.status);
-    console.log("Google Apps Script response:", responseText);
-
-    if (!scriptResponse.ok) {
-      return NextResponse.json(
-        {
-          error: "Google Apps Script returned an HTTP error.",
-          status: scriptResponse.status,
-          details: responseText,
-        },
-        { status: 502 },
-      );
-    }
-
-    let scriptResult: {
-      success?: boolean;
-      error?: string;
-    };
+    let result;
 
     try {
-      scriptResult = JSON.parse(responseText);
+      result = JSON.parse(text);
     } catch {
-      return NextResponse.json(
-        {
-          error: "Google Apps Script returned an invalid response.",
-          details: responseText,
-        },
-        { status: 502 },
-      );
+      result = {
+        success: false,
+        error: text,
+      };
     }
 
-    // IMPORTANT:
-    // Apps Script may return HTTP 200 even when your try/catch
-    // returned { success: false }.
-    if (!scriptResult.success) {
-      console.error("Google Apps Script reported failure:", scriptResult.error);
-
+    if (!response.ok || !result.success) {
       return NextResponse.json(
         {
-          error: "Google Apps Script failed to save the RSVP.",
-          details: scriptResult.error ?? "Unknown Apps Script error",
+          success: false,
+          error: result.error || "Failed to submit RSVP.",
         },
-        { status: 502 },
+        { status: 500 },
       );
     }
 
     return NextResponse.json({
       success: true,
+      responseId: result.responseId,
     });
   } catch (error) {
-    console.error("RSVP API error:", error);
+    console.error("RSVP API ERROR:", error);
 
     return NextResponse.json(
       {
-        error: "Something went wrong while submitting your RSVP.",
+        success: false,
+        error: "Failed to submit RSVP.",
       },
       { status: 500 },
     );

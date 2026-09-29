@@ -1,27 +1,7 @@
+// https://script.google.com/macros/s/AKfycbxKfMcttt63aYrnoO0UyHX8wiLeBgqJ2KY9x12Im6s0Ba-U-UBavolYGz-JdD3fluQ/exec
+
 "use client";
-
-/* 
-https://docs.google.com/forms/d/e/1FAIpQLSfl9bOPaizC4P-gtO9fnqbNE2W_MKyDo4aicsVvF96vNTxxqg/viewform?usp=publish-editor
-
-google forms
-
-edittor link:
-https://docs.google.com/forms/d/1EJZD4iG1oIahF0m_XU85we7CvEE9fo71fboY1ZlnsOI/edit
-
-responder link:
-https://docs.google.com/forms/d/e/1FAIpQLSfl9bOPaizC4P-gtO9fnqbNE2W_MKyDo4aicsVvF96vNTxxqg/viewform?usp=header
-
-input field mapping:
-fullname:                 entry.2064952522
-email:                    entry.2141666687
-will you be attending:    entry.1568948851
-number of guests:         entry.1720588372
-message:                  entry.884402531
-
-form's post endpoint:
-https://docs.google.com/forms/u/0/d/e/1FAIpQLSfl9bOPaizC4P-gtO9fnqbNE2W_MKyDo4aicsVvF96vNTxxqg/formResponse
-
-*/
+// https://script.google.com/macros/s/AKfycbxKfMcttt63aYrnoO0UyHX8wiLeBgqJ2KY9x12Im6s0Ba-U-UBavolYGz-JdD3fluQ/exec
 import React, {
   FormEvent,
   useEffect,
@@ -51,21 +31,24 @@ function RSVP() {
 
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const form = event.currentTarget;
-    const formData = new FormData(form);
-    const payload = {
-      name: formData.get("name")?.toString() ?? "",
-      email: formData.get("email")?.toString() ?? "",
-      attendance: formData.get("attendance")?.toString() ?? "",
-      guests: formData.get("guests")?.toString() ?? "",
-      message: formData.get("message")?.toString() ?? "",
-    };
 
     setIsSubmitting(true);
     setSubmitError("");
+    setSubmitted(false);
+
+    const formData = new FormData(form);
+
+    const payload = {
+      name: String(formData.get("name") || ""),
+      email: String(formData.get("email") || ""),
+      attendance: String(formData.get("attendance") || ""),
+      guests: String(formData.get("guests") || ""),
+      message: String(formData.get("message") || ""),
+    };
 
     try {
       const response = await fetch("/api/rsvp", {
@@ -76,22 +59,25 @@ function RSVP() {
         body: JSON.stringify(payload),
       });
 
-      if (!response.ok) {
-        throw new Error("RSVP submission failed");
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || "Failed to submit RSVP.");
       }
 
+      // Success
       setSubmitted(true);
       form.reset();
     } catch (error) {
-      setSubmitted(false);
-      setSubmitError(
-        "We couldn’t send your RSVP right now. Please try again in a moment.",
-      );
       console.error("RSVP submission error:", error);
+
+      setSubmitError(
+        error instanceof Error ? error.message : "Something went wrong.",
+      );
     } finally {
       setIsSubmitting(false);
     }
-  }
+  };
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
@@ -433,7 +419,6 @@ function RSVP() {
                         <option value="Yes, I will be there">
                           Yes, I will be there
                         </option>
-
                         <option value="Sorry, I can't make it">
                           Sorry, I can't make it
                         </option>
@@ -486,15 +471,15 @@ function RSVP() {
                       />
                     </div>
 
-                    {submitted && (
-                      <div className="rounded-md border border-[#dccdbd] bg-[#eee2d5]/80 p-4 text-center text-sm text-[#6f655d]">
-                        Thank you! Your RSVP has been received.
-                      </div>
-                    )}
-
                     {submitError && (
                       <div className="rounded-md border border-red-200 bg-red-50 p-4 text-center text-sm text-red-700">
                         {submitError}
+                      </div>
+                    )}
+
+                    {submitted && (
+                      <div className="rounded-md border border-[#dccdbd] bg-[#eee2d5]/80 p-4 text-center text-sm text-[#6f655d]">
+                        Thank you! Your RSVP has been received.
                       </div>
                     )}
 
@@ -502,18 +487,16 @@ function RSVP() {
                       type="submit"
                       disabled={isSubmitting}
                       className="
-                        h-11
-                        w-full
-                        rounded-full
-                        bg-[#8c7663]
-                        text-white
-                        shadow-[0_8px_20px_rgba(70,50,35,0.20)]
-                        hover:bg-[#756252]
-                        disabled:cursor-not-allowed
-                        disabled:opacity-70
-                      "
+    h-11
+    w-full
+    rounded-full
+    bg-[#8c7663]
+    text-white
+    shadow-[0_8px_20px_rgba(70,50,35,0.20)]
+    hover:bg-[#756252]
+  "
                     >
-                      {isSubmitting ? "Sending..." : "Submit RSVP"}
+                      {isSubmitting ? "Submitting..." : "Submit RSVP"}
                     </Button>
                   </form>
                 </div>
@@ -741,7 +724,7 @@ function RSVP() {
               >
                 {/* Wax texture */}
                 <img
-                  src="/stamp-texture.png"
+                  src="/anagram-stamp.png"
                   alt=""
                   aria-hidden="true"
                   className="
@@ -752,6 +735,7 @@ function RSVP() {
       object-contain
       pointer-events-none
       opacity-80
+      rotate-345
     "
                 />
 
@@ -764,9 +748,10 @@ function RSVP() {
       items-center
       justify-center
       pointer-events-none
+      
     "
                 >
-                  <span
+                  {/* <span
                     className="
         font-serif
         text-lg
@@ -777,7 +762,7 @@ function RSVP() {
       "
                   >
                     P&C
-                  </span>
+                  </span> */}
                 </div>
               </button>
             </div>

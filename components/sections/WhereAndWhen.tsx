@@ -24,7 +24,7 @@ function WhereAndWhen() {
       description: "Saturday",
       icon: CalendarDays,
       image:
-        "https://res.cloudinary.com/dbav6z7re/image/upload/v1790622919/calendar_without_head_gk2vri.png",
+        "https://res.cloudinary.com/dbav6z7re/image/upload/v1790691921/calendar_without_head_gk2vri_ryixlk.jpg",
       details:
         "Join us on Saturday, November 14, 2026 as we celebrate this special day together.",
     },
@@ -68,7 +68,7 @@ function WhereAndWhen() {
       description: "Warm Blessings",
       icon: Gift,
       image:
-        "https://res.cloudinary.com/dbav6z7re/image/upload/v1790612555/qr2_vplsk0.png",
+        "https://res.cloudinary.com/dbav6z7re/image/upload/v1790691832/working_QR_r0bpsp.jpg",
       details:
         "Your presence is already a gift to us. For those who would like to give something, monetary gifts are warmly appreciated.",
     },
