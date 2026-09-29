@@ -55,6 +55,7 @@ function Story() {
       rotate: 8,
     },
   ];
+
   return (
     <section
       id="story"
@@ -62,7 +63,7 @@ function Story() {
     >
       <div className="relative mx-auto max-w-6xl">
         {/* Scattered Photos */}
-        <div className="pointer-events-none absolute inset-0 hidden md:block">
+        <div className="pointer-events-none absolute inset-0 hidden lg:block">
           {photos.map((photo, index) => {
             const positionStyle = {
               top: photo.top,
@@ -122,7 +123,14 @@ function Story() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7 }}
-            className="text-xs uppercase tracking-[0.35em] text-[#a58b72]"
+            className="
+              text-xs
+              uppercase
+              tracking-[0.35em]
+              text-[#a58b72]
+              drop-shadow-[0_0_10px_rgba(255,255,255,1)]
+              sm:drop-shadow-[0_0_50px_rgba(255,255,255,1)]
+            "
           >
             Our Story
           </motion.p>
@@ -133,14 +141,15 @@ function Story() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, delay: 0.1 }}
             className="
-    mt-4
-    font-serif
-    text-4xl
-    leading-tight
-    text-[#3f3a35]
-    drop-shadow-[0_0_8px_rgba(255,255,255,0.95)]
-    sm:text-5xl
-  "
+              mt-4
+              font-serif
+              text-4xl
+              leading-tight
+              text-[#2f2b28]
+              drop-shadow-[0_0_10px_rgba(255,255,255,1)]
+              sm:text-5xl
+              sm:drop-shadow-[0_0_14px_rgba(255,255,255,1)]
+            "
           >
             A little story about us
           </motion.h2>
@@ -162,12 +171,13 @@ function Story() {
           >
             <p
               className="
-  text-base
-  leading-8
-  text-[#6f655d]
-  drop-shadow-[0_0_7px_rgba(255,255,255,0.95)]
-  sm:text-lg
-"
+                text-base
+                leading-8
+                text-[#5f5852]
+                drop-shadow-[0_0_50px_rgba(255,255,255,1)]
+                sm:text-lg
+                sm:drop-shadow-[0_0_50px_rgba(255,255,255,1)]
+              "
             >
               Some love stories take years to unfold. Ours happened in the
               simplest, most unexpected way. Our story is only beginning.
@@ -175,12 +185,13 @@ function Story() {
 
             <p
               className="
-  text-base
-  leading-8
-  text-[#6f655d]
-  drop-shadow-[0_0_7px_rgba(255,255,255,0.95)]
-  sm:text-lg
-"
+                text-base
+                leading-8
+                text-[#5f5852]
+                dropdrop-shadow-[0_0_50px_rgba(255,255,255,1)],255,1)]
+                sm:text-lg
+                sm:drop-shadow-[0_0_50px_rgba(255,255,255,1)]
+              "
             >
               We may not have had years to write our story, but we’ve already
               created so many memories worth keeping.
@@ -188,12 +199,13 @@ function Story() {
 
             <p
               className="
-  text-base
-  leading-8
-  text-[#6f655d]
-  drop-shadow-[0_0_7px_rgba(255,255,255,0.95)]
-  sm:text-lg
-"
+                text-base
+                leading-8
+                text-[#5f5852]
+                dropdrop-shadow-[0_0_50px_rgba(255,255,255,1)],255,1)]
+                sm:text-lg
+                sm:drop-shadow-[0_0_50px_rgba(255,255,255,1)]
+              "
             >
               And now, one beautiful chapter is coming to an end… as we begin
               our greatest one yet.
@@ -201,12 +213,13 @@ function Story() {
 
             <p
               className="
-  text-base
-  leading-8
-  text-[#6f655d]
-  drop-shadow-[0_0_7px_rgba(255,255,255,0.95)]
-  sm:text-lg
-"
+                text-base
+                leading-8
+                text-[#5f5852]
+                dropdrop-shadow-[0_0_50px_rgba(255,255,255,1)],255,1)]
+                sm:text-lg
+                sm:drop-shadow-[0_0_50px_rgba(255,255,255,1)]
+              "
             >
               From two churchmates who barely knew each other, to motorcycle
               conversations, coffee dates, music, adventures, and countless
@@ -216,12 +229,13 @@ function Story() {
 
             <p
               className="
-  text-base
-  leading-8
-  text-[#6f655d]
-  drop-shadow-[0_0_7px_rgba(255,255,255,0.95)]
-  sm:text-lg
-"
+                text-base
+                leading-8
+                text-[#5f5852]
+                dropdrop-shadow-[0_0_50px_rgba(255,255,255,1)],255,1)]
+                sm:text-lg
+                sm:drop-shadow-[0_0_50px_rgba(255,255,255,1)]
+              "
             >
               In just one year, we found laughter, comfort, support, and a love
               worth choosing every day.
@@ -229,12 +243,13 @@ function Story() {
 
             <p
               className="
-  text-base
-  leading-8
-  text-[#6f655d]
-  drop-shadow-[0_0_7px_rgba(255,255,255,0.95)]
-  sm:text-lg
-"
+                text-base
+                leading-8
+                text-[#5f5852]
+                dropdrop-shadow-[0_0_50px_rgba(255,255,255,1)],255,1)]
+                sm:text-lg
+                sm:drop-shadow-[0_0_50px_rgba(255,255,255,1)]
+              "
             >
               Now, we are excited to begin our next chapter together, surrounded
               by the people who have made our journey special.
@@ -243,7 +258,7 @@ function Story() {
         </div>
 
         {/* Mobile Photo Strip */}
-        <div className="mt-12 grid grid-cols-3 gap-3 md:hidden">
+        <div className="mt-12 grid grid-cols-3 gap-3 lg:hidden">
           {photos.slice(0, 6).map((photo, index) => (
             <motion.div
               key={photo.src}
