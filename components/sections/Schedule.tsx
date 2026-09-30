@@ -126,7 +126,7 @@ function Schedule() {
         </div>
 
         {/* Event Parts */}
-        <Accordion className="w-full" defaultValue={["reception"]}>
+        <Accordion className="w-full">
           {/* Ceremony */}
           <AccordionItem value="ceremony" className="border-[#e0d6cc]">
             <AccordionTrigger
