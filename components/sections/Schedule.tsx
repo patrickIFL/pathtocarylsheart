@@ -1,4 +1,12 @@
+"use client";
+
 import React from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const receptionProgram = [
   {
@@ -35,7 +43,7 @@ const receptionProgram = [
   },
   {
     number: "IX",
-    title: "Traditional Prosperity Dance / Pasabit Dance",
+    title: "Traditional Prosperity Dance / Money Dance",
   },
   {
     number: "X",
@@ -47,7 +55,7 @@ const receptionProgram = [
         name: "Angela Marie Lumbre",
       },
       {
-        role: "Best Man (Toast Master)",
+        role: "Best Man",
         name: "Raphael Vincent Lim",
       },
     ],
@@ -111,65 +119,170 @@ function Schedule() {
           </p>
 
           <h2 className="mt-4 font-serif text-4xl text-[#3f3a35] sm:text-5xl">
-            Reception Program
+            Our Schedule
           </h2>
 
           <div className="mx-auto mt-8 h-px w-16 bg-[#cdbba8]" />
         </div>
 
-        {/* Reception Program */}
-        <div className="divide-y divide-[#e0d6cc]">
-          {receptionProgram.map((program) => (
-            <div key={program.number} className="py-7 sm:flex sm:gap-8">
-              {/* Number */}
-              <div className="mb-3 shrink-0 sm:mb-0 sm:w-16">
-                <span className="font-serif text-lg text-[#a58b72]">
-                  {program.number}
-                </span>
-              </div>
+        {/* Event Parts */}
+        <Accordion
+          type="single"
+          collapsible
+          className="w-full"
+          defaultValue="reception"
+        >
+          {/* Ceremony */}
+          <AccordionItem value="ceremony" className="border-[#e0d6cc]">
+            <AccordionTrigger
+              className="
+      relative
+      justify-center
+      py-7
+      text-center
+      hover:no-underline
+      [&>svg]:absolute
+      [&>svg]:right-0
+    "
+            >
+              <div className="w-full text-center">
+                <p className="text-xs uppercase tracking-[0.3em] text-[#a58b72]">
+                  Part I
+                </p>
 
-              {/* Content */}
-              <div className="flex-1">
-                <h3 className="font-serif text-xl text-[#3f3a35] sm:text-2xl">
-                  {program.title}
+                <h3 className="mt-2 font-serif text-2xl text-[#3f3a35] sm:text-3xl">
+                  Ceremony
+                </h3>
+              </div>
+            </AccordionTrigger>
+
+            <AccordionContent className="pb-8 text-center">
+              <p className="text-sm leading-7 text-[#7c7168]">
+                Ceremony details will be shared here.
+              </p>
+            </AccordionContent>
+          </AccordionItem>
+
+          {/* Pikapika */}
+          <AccordionItem value="pikapika" className="border-[#e0d6cc]">
+            <AccordionTrigger
+              className="
+      relative
+      justify-center
+      py-7
+      text-center
+      hover:no-underline
+      [&>svg]:absolute
+      [&>svg]:right-0
+    "
+            >
+              <div className="w-full text-center">
+                <p className="text-xs uppercase tracking-[0.3em] text-[#a58b72]">
+                  Part II
+                </p>
+
+                <h3 className="mt-2 font-serif text-2xl text-[#3f3a35] sm:text-3xl">
+                  Pikapika
                 </h3>
 
-                {/* Sub-items */}
-                {program.items && (
-                  <div className="mt-4 space-y-2">
-                    {program.items.map((item) => (
-                      <p
-                        key={item}
-                        className="text-sm leading-6 text-[#7c7168]"
-                      >
-                        • {item}
-                      </p>
-                    ))}
-                  </div>
-                )}
-
-                {/* People */}
-                {program.people && (
-                  <div className="mt-5 space-y-3">
-                    {program.people.map((person) => (
-                      <div key={person.role}>
-                        <p className="text-xs uppercase tracking-[0.18em] text-[#a58b72]">
-                          {person.role}
-                        </p>
-
-                        {person.name && (
-                          <p className="mt-1 text-sm text-[#6f655d]">
-                            {person.name}
-                          </p>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                )}
+                <p className="mt-1 text-sm font-normal text-[#7c7168]">
+                  Snacks &amp; refreshments
+                </p>
               </div>
-            </div>
-          ))}
-        </div>
+            </AccordionTrigger>
+
+            <AccordionContent className="pb-8 text-center">
+              <p className="text-sm leading-7 text-[#7c7168]">
+                Pikapika details will be shared here.
+              </p>
+            </AccordionContent>
+          </AccordionItem>
+
+          {/* Reception */}
+          <AccordionItem value="reception" className="border-[#e0d6cc]">
+            <AccordionTrigger
+              className="
+    relative
+    justify-center
+    py-7
+    text-center
+    hover:no-underline
+    [&>svg]:absolute
+    [&>svg]:right-0
+  "
+            >
+              <div className="w-full text-center">
+                <p className="text-xs uppercase tracking-[0.3em] text-[#a58b72]">
+                  Part III
+                </p>
+
+                <h3 className="mt-2 font-serif text-2xl text-[#3f3a35] sm:text-3xl">
+                  Reception
+                </h3>
+              </div>
+            </AccordionTrigger>
+
+            <AccordionContent className="pb-8">
+              <div className="mx-auto max-w-xl divide-y divide-[#e0d6cc] ">
+                {receptionProgram.map((program) => (
+                  <div key={program.number} className="py-3 text-center ">
+                    {/* Content */}
+                    <div className="text-left mx-auto mt-2 flex gap-15">
+                      <div className=" w-[50px]">
+                        <span className="font-serif text-lg text-[#a58b72]">
+                          {program.number}
+                        </span>
+                      </div>
+                      <div className=" flex-1">
+                        <h4 className="font-serif text-lg text-[#3f3a35] sm:text-xl">
+                          {program.title}
+                        </h4>
+
+                        <div>
+                          {/* Sub-items */}
+                          {program.items && (
+                            <div className="mt-3 flex flex-col">
+                              {program.items.map((item) => (
+                                <span
+                                  key={item}
+                                  className="m-0 text-sm leading-5 text-[#7c7168]"
+                                >
+                                  • {item}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+
+                          {/* People */}
+                          {program.people && (
+                            <div className="mt-1">
+                              {program.people.map((person) => (
+                                <div
+                                  key={person.role}
+                                  className="ml-3 mt-1 flex items-center"
+                                >
+                                  <span className="flex-1 text-xs uppercase tracking-[0.18em] text-[#a58b72]">
+                                    {person.role}
+                                  </span>
+
+                                  {person.name && (
+                                    <span className="flex-1 text-sm text-[#6f655d]">
+                                      {person.name}
+                                    </span>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
 
         {/* Special Requests */}
         <div className="mt-20 border-t border-[#e0d6cc] pt-12">
