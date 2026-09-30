@@ -31,11 +31,11 @@ const receptionProgram = [
   },
   {
     number: "VI",
-    title: "Traditional Dance – Mother and Groom Dance",
+    title: "Dance – Mother and Groom Dance",
   },
   {
     number: "VII",
-    title: "Traditional Dance – Father and Bride Dance",
+    title: "Dance – Father and Bride Dance",
   },
   {
     number: "VIII",
@@ -43,7 +43,7 @@ const receptionProgram = [
   },
   {
     number: "IX",
-    title: "Traditional Prosperity Dance / Money Dance",
+    title: "Prosperity Dance / Money Dance",
   },
   {
     number: "X",
@@ -223,7 +223,7 @@ function Schedule() {
                   <div key={program.number} className="py-3 text-center ">
                     {/* Content */}
                     <div className="text-left mx-auto mt-2 flex gap-15">
-                      <div className=" w-[50px]">
+                      <div className=" w-[15px]">
                         <span className="font-serif text-lg text-[#a58b72]">
                           {program.number}
                         </span>
