@@ -97,7 +97,7 @@ function Hero() {
             delay: 1.2,
             ease: "easeOut",
           }}
-          className="mt-2 text-sm uppercase tracking-[0.25em] text-white/85 sm:text-base"
+          className="mt-2 text-xl uppercase tracking-[0.25em] text-white/85 sm:text-base"
         >
           03:00 PM
         </motion.p>

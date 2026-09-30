@@ -21,7 +21,7 @@ function WhereAndWhen() {
     {
       label: "When",
       title: "November 14, 2026",
-      description: "Saturday",
+      description: "Saturday at 03:00 PM",
       icon: CalendarDays,
       image:
         "https://res.cloudinary.com/dbav6z7re/image/upload/v1790691921/calendar_without_head_gk2vri_ryixlk.jpg",
