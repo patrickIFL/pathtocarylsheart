@@ -10,7 +10,7 @@ function VincentPage() {
     <main className="min-h-screen bg-[#f3eee8] px-6 py-20 text-[#3f3a35]">
       <div className="mx-auto max-w-3xl">
         {/* Header */}
-        <div className="mt-16 text-center">
+        <div className="text-center">
           <motion.p
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
