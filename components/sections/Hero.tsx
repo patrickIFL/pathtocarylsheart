@@ -90,6 +90,19 @@ function Hero() {
         />
 
         <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.8,
+            delay: 1.2,
+            ease: "easeOut",
+          }}
+          className="mt-2 text-sm uppercase tracking-[0.25em] text-white/85 sm:text-base"
+        >
+          03:00 PM
+        </motion.p>
+
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
