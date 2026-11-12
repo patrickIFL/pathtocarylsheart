@@ -45,8 +45,8 @@ function Niechellepage() {
         >
           <div className="relative aspect-[4/5] overflow-hidden">
             <Image
-              src="https://res.cloudinary.com/dbav6z7re/image/upload/v1790708838/vincent_rjzw7g.jpg"
-              alt="Vincent"
+              src="https://res.cloudinary.com/dbav6z7re/image/upload/v1794337429/0a4a1b1c-f6b0-4945-9fe7-5f54e9a94bf6_kf4nyd.jpg"
+              alt="Niechelle"
               fill
               className="object-cover"
             />
@@ -72,9 +72,9 @@ function Niechellepage() {
 
           <div className="space-y-6 text-center text-base leading-8 text-[#6f655d] sm:text-lg">
             <p>
-              I&apos;m so happy that I get to be part of your family, too.
-              Thank you for welcoming me and for bringing so much sweetness and
-              joy into our lives.
+              I&apos;m so happy that I get to be part of your family, too. Thank
+              you for welcoming me and for bringing so much sweetness and joy
+              into our lives.
             </p>
 
             <p>
@@ -87,9 +87,7 @@ function Niechellepage() {
               in my heart.
             </p>
 
-            <p>
-              Love you, Chichi! 🥹💕
-            </p>
+            <p>Love you, Chichi! 🥹💕</p>
           </div>
         </motion.section>
       </div>
