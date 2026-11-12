@@ -3,8 +3,6 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import VincentPage from "../vincent/page";
 
 function CarloPage() {
   return (
@@ -18,7 +16,7 @@ function CarloPage() {
             transition={{ duration: 0.7 }}
             className="text-xs uppercase tracking-[0.35em] text-[#a58b72]"
           >
-            One of my Groomsmen
+            The Media Director
           </motion.p>
 
           <motion.h1
@@ -63,37 +61,49 @@ function CarloPage() {
           className="mt-14 rounded-sm bg-[#fffdf9] px-7 py-10 shadow-[0_15px_40px_rgba(63,58,53,0.08)] sm:px-12 sm:py-14"
         >
           <p className="text-center text-xs uppercase tracking-[0.3em] text-[#a58b72]">
-            How I Know Him
+            A note for you
           </p>
 
           <h2 className="mt-4 text-center font-serif text-3xl">
-            A friendship worth keeping
+            Hi, Kuya Carlo!
           </h2>
 
           <div className="mx-auto my-6 h-px w-12 bg-[#cdbba8]" />
 
           <div className="space-y-6 text-center text-base leading-8 text-[#6f655d] sm:text-lg">
             <p>
-              This is where you tell the story of how you and Vincent first met.
+              Salamat sa lahat ng effort na ginawa mo para maging memorable ang
+              kasal ko, sa special number natin sa kasal, at especially, sa
+              wedding celebration na ihinanda niyo last Sunday.
             </p>
 
             <p>
-              You can talk about the early days of your friendship, the
-              experiences you shared, the stupid things you laughed about, and
-              the moments that made you realize he was someone you could always
-              count on.
+              Habang sinusulat ko ito, naaalala ko ang mga panahong nakasama
+              kita. Naiisip ko, paano nagkasya sa iisang tao ang pagiging
+              masayang kasama, professional artist, organized, calm and
+              collected, Godly, pogi, at sobrang cool? Usually tig-iisang trait
+              lang ang meron ang mga tao, pero nahakot mo lahat. Hahaha!
             </p>
 
             <p>
-              Over the years, friendships change and life gets busier, but some
-              people remain an important part of your story. Vincent is one of
-              those people.
+              Gusto ko ring magpasalamat dahil kahit hindi ako masyadong
+              nakikisalamuha sa iba dahil inverter ako, ikaw at si Kuya Eric ang
+              laging nangunguna sa paghikayat sa akin na makisalamuha.
             </p>
 
             <p>
-              And now, as I begin this new chapter of my life, I can't imagine
-              having my wedding day without having you there beside me.
+              Nakakabilib din na mayroon kayong sariling studio at nakakakuha
+              kayo ng high-paying clients. Pangarap ko rin iyon, at
+              pinagsisikapan ko na ngayon.
             </p>
+
+            <p>
+              Looking forward to making more memories with you. Lagi akong
+              susuporta sa iyo, lalo na sa Young Pro Circle na sinisimulan natin
+              sa church.
+            </p>
+
+            <p>Salute, Kuya!</p>
           </div>
         </motion.section>
 
@@ -105,11 +115,11 @@ function CarloPage() {
           className="mt-12 text-center"
         >
           <p className="font-serif text-2xl text-[#4b433d]">
-            Thank you for being part of my story, Vincent.
+            Salamat sa lahat, Kuya Carlo.
           </p>
 
           <p className="mt-4 text-sm text-[#8c7663]">
-            I’m glad you’ll be part of this next chapter too.
+            Looking forward to making more memories together.
           </p>
         </motion.section>
       </div>

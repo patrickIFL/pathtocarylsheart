@@ -3,8 +3,6 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import VincentPage from "../vincent/page";
 
 function IvanPage() {
   return (
@@ -18,7 +16,7 @@ function IvanPage() {
             transition={{ duration: 0.7 }}
             className="text-xs uppercase tracking-[0.35em] text-[#a58b72]"
           >
-            One of my Groomsmen
+            The Good Sir
           </motion.p>
 
           <motion.h1
@@ -63,36 +61,40 @@ function IvanPage() {
           className="mt-14 rounded-sm bg-[#fffdf9] px-7 py-10 shadow-[0_15px_40px_rgba(63,58,53,0.08)] sm:px-12 sm:py-14"
         >
           <p className="text-center text-xs uppercase tracking-[0.3em] text-[#a58b72]">
-            How I Know Him
+            A note for you
           </p>
 
-          <h2 className="mt-4 text-center font-serif text-3xl">
-            A friendship worth keeping
-          </h2>
+          <h2 className="mt-4 text-center font-serif text-3xl">Hi, Van!</h2>
 
           <div className="mx-auto my-6 h-px w-12 bg-[#cdbba8]" />
 
           <div className="space-y-6 text-center text-base leading-8 text-[#6f655d] sm:text-lg">
             <p>
-              This is where you tell the story of how you and Vincent first met.
+              Thank you, bro, sa oras na inilaan mo para maging groomsman ko, at
+              lalo na sa pagsama sa wedding surprise para sa amin ni Karen.
             </p>
 
             <p>
-              You can talk about the early days of your friendship, the
-              experiences you shared, the stupid things you laughed about, and
-              the moments that made you realize he was someone you could always
-              count on.
+              Sobrang na-appreciate ko na nakita kita roon habang nagsasalita
+              sila. Kahit medyo na-OOP ka at pagod galing sa work, nagpakita ka
+              pa rin para sa aming dalawa.
             </p>
 
             <p>
-              Over the years, friendships change and life gets busier, but some
-              people remain an important part of your story. Vincent is one of
-              those people.
+              Malaki ang naging impact mo sa buhay ko, lalo na sa career at
+              mindset ko. Alam mo ba, isa ka sa mga dahilan kung bakit pinursue
+              ko ang career na aligned sa natapos ko. Na-inspire ako sa
+              pagpupursigi mong i-level up ang buhay mo sa sarili mong paraan.
             </p>
 
             <p>
-              And now, as I begin this new chapter of my life, I can't imagine
-              having my wedding day without having you there beside me.
+              Nakikita ko kung gaano ka mag-isip nang mas ahead sa edad mo. Alam
+              kong dahan-dahan, magiging milyonaryo ka. Hahaha!
+            </p>
+
+            <p>
+              Salamat, Van. Hindi mo siguro alam, pero lodi kita pagdating sa
+              mga life lesson. Salute!
             </p>
           </div>
         </motion.section>
@@ -105,12 +107,10 @@ function IvanPage() {
           className="mt-12 text-center"
         >
           <p className="font-serif text-2xl text-[#4b433d]">
-            Thank you for being part of my story, Vincent.
+            Salamat sa lahat, Van.
           </p>
 
-          <p className="mt-4 text-sm text-[#8c7663]">
-            I’m glad you’ll be part of this next chapter too.
-          </p>
+          <p className="mt-4 text-sm text-[#8c7663]">Salute to the Good Sir!</p>
         </motion.section>
       </div>
     </main>

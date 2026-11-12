@@ -3,7 +3,6 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Link from "next/link";
 
 function VincentPage() {
   return (
@@ -17,7 +16,7 @@ function VincentPage() {
             transition={{ duration: 0.7 }}
             className="text-xs uppercase tracking-[0.35em] text-[#a58b72]"
           >
-            One of my Groomsmen
+            The Black Belter
           </motion.p>
 
           <motion.h1
@@ -62,37 +61,58 @@ function VincentPage() {
           className="mt-14 rounded-sm bg-[#fffdf9] px-7 py-10 shadow-[0_15px_40px_rgba(63,58,53,0.08)] sm:px-12 sm:py-14"
         >
           <p className="text-center text-xs uppercase tracking-[0.3em] text-[#a58b72]">
-            How I Know Him
+            A note for you
           </p>
 
-          <h2 className="mt-4 text-center font-serif text-3xl">
-            A friendship worth keeping
-          </h2>
+          <h2 className="mt-4 text-center font-serif text-3xl">Hi, men!</h2>
 
           <div className="mx-auto my-6 h-px w-12 bg-[#cdbba8]" />
 
           <div className="space-y-6 text-center text-base leading-8 text-[#6f655d] sm:text-lg">
             <p>
-              This is where you tell the story of how you and Vincent first met.
+              Salamat sa pag-support sa akin hanggang sa special day ko. Grabe,
+              ang dami mong nasaksihan sa buhay ko. Naalala ko noong kinder pa
+              tayo, sinapak mo ako. Hahaha! Pero ikaw talaga ang laging
+              nakakaalala sa akin.
             </p>
 
             <p>
-              You can talk about the early days of your friendship, the
-              experiences you shared, the stupid things you laughed about, and
-              the moments that made you realize he was someone you could always
-              count on.
+              Sobrang memorable sa akin ang mga araw na magkasama tayo, tulad
+              noong sinamahan mo akong maglakad mula Purok 6 hanggang Purok 3
+              Habana habang nakasaklay ako.
             </p>
 
             <p>
-              Over the years, friendships change and life gets busier, but some
-              people remain an important part of your story. Vincent is one of
-              those people.
+              Bakit nga ba ako naka-saklay? Nag-parkour ako sa bangin, bumagsak
+              sa bubog, at duguan akong napunta sa CR. Kayo ni Sir Wax pa ang
+              naglalagay ng kape sa paa ko para huminto ang pagdurugo. Hahaha!
             </p>
 
             <p>
-              And now, as I begin this new chapter of my life, I can't imagine
-              having my wedding day without having you there beside me.
+              Naalala ko rin noong nagda-drive tayo ng van at nag-drive-thru sa
+              McDonald&apos;s. Nahuli tayo ng pulis sa SBMA dahil sa pedestrian,
+              tapos inalok pa natin siya ng burger. Hahaha!
             </p>
+
+            <p>
+              Ikaw rin ang source ko ng mga malulupit na mobile game dahil IT
+              ang kuya mo. At ikaw rin ang number one support AP
+              Blitzcrank—kahit medyo KS ka. Hahaha!
+            </p>
+
+            <p>
+              Sinamahan mo rin ako sa college graduation ko, at kasama kita
+              noong nag-check ako sa PRMSU. Iyon ang una kong long ride gamit
+              ang Aerox ko.
+            </p>
+
+            <p>
+              Sobrang memorable sa akin ang lahat ng iyon. Hanggang ngayon,
+              kapag kasama ko kayo ni Ivan, parang nabubuhay ulit ang mga alaala
+              ng pagkabata ko.
+            </p>
+
+            <p>Habambuhay kitang iche-cherish bilang best friend ko. Salute!</p>
           </div>
         </motion.section>
 
@@ -104,11 +124,11 @@ function VincentPage() {
           className="mt-12 text-center"
         >
           <p className="font-serif text-2xl text-[#4b433d]">
-            Thank you for being part of my story, Vincent.
+            Salamat sa lahat, Vincent.
           </p>
 
           <p className="mt-4 text-sm text-[#8c7663]">
-            I’m glad you’ll be part of this next chapter too.
+            Salute to the Black belter Pussy Lover!
           </p>
         </motion.section>
       </div>

@@ -3,7 +3,6 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Link from "next/link";
 
 function RustiePage() {
   return (
@@ -17,7 +16,7 @@ function RustiePage() {
             transition={{ duration: 0.7 }}
             className="text-xs uppercase tracking-[0.35em] text-[#a58b72]"
           >
-            One of my Groomsmen
+            The Amazing Spiderman
           </motion.p>
 
           <motion.h1
@@ -62,37 +61,43 @@ function RustiePage() {
           className="mt-14 rounded-sm bg-[#fffdf9] px-7 py-10 shadow-[0_15px_40px_rgba(63,58,53,0.08)] sm:px-12 sm:py-14"
         >
           <p className="text-center text-xs uppercase tracking-[0.3em] text-[#a58b72]">
-            How I Know Him
+            A note for you
           </p>
 
           <h2 className="mt-4 text-center font-serif text-3xl">
-            A friendship worth keeping
+            Hi, Kuya Rustie!
           </h2>
 
           <div className="mx-auto my-6 h-px w-12 bg-[#cdbba8]" />
 
           <div className="space-y-6 text-center text-base leading-8 text-[#6f655d] sm:text-lg">
             <p>
-              This is where you tell the story of how you and Vincent first met.
+              Salamat sa suporta mo sa wedding namin ni Karen. Napaka-supportive
+              mo rin sa amin pagdating sa mga advice at sa mga naging gala natin
+              kasama ang pamilya ko.
             </p>
 
             <p>
-              You can talk about the early days of your friendship, the
-              experiences you shared, the stupid things you laughed about, and
-              the moments that made you realize he was someone you could always
-              count on.
+              Sobrang naiinspire kami ni Karen sa wedding ninyo at sa samahan
+              ninyo ni Ate Yen. Alam kong marami pa tayong magiging bonding at
+              makakapunta ulit tayo sa HisLife. O baka hindi lang HisLife
+              this time, kundi mas malalayong galaan pa. Hahaha!
             </p>
 
             <p>
-              Over the years, friendships change and life gets busier, but some
-              people remain an important part of your story. Vincent is one of
-              those people.
+              Looking forward, Kuya, na matuto sa iyo ng mga advice tungkol sa
+              married life. Pangako ko na sa kabila ng mga bagong
+              responsibilidad na haharapin ko, sabay pa rin naming
+              paglilingkuran ang Panginoon.
             </p>
 
             <p>
-              And now, as I begin this new chapter of my life, I can't imagine
-              having my wedding day without having you there beside me.
+              Congratulations sa baby ninyo! Nasa iyo ang buong suporta ko,
+              Kuya. Looking forward ako sa mga major life events natin, lalo na
+              sa mga darating sa iyo dahil magiging father ka na.
             </p>
+
+            <p>Salamat sa lahat, Kuya! Salute!</p>
           </div>
         </motion.section>
 
@@ -104,11 +109,11 @@ function RustiePage() {
           className="mt-12 text-center"
         >
           <p className="font-serif text-2xl text-[#4b433d]">
-            Thank you for being part of my story, Vincent.
+            Salamat sa lahat, Kuya Rustie.
           </p>
 
           <p className="mt-4 text-sm text-[#8c7663]">
-            I’m glad you’ll be part of this next chapter too.
+            Excited na ako sa mga susunod nating bonding at milestones!
           </p>
         </motion.section>
       </div>

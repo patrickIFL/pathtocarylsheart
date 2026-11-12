@@ -3,7 +3,6 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Link from "next/link";
 
 function RyanPage() {
   return (
@@ -17,7 +16,7 @@ function RyanPage() {
             transition={{ duration: 0.7 }}
             className="text-xs uppercase tracking-[0.35em] text-[#a58b72]"
           >
-            One of my Groomsmen
+            The Endurider
           </motion.p>
 
           <motion.h1
@@ -62,37 +61,43 @@ function RyanPage() {
           className="mt-14 rounded-sm bg-[#fffdf9] px-7 py-10 shadow-[0_15px_40px_rgba(63,58,53,0.08)] sm:px-12 sm:py-14"
         >
           <p className="text-center text-xs uppercase tracking-[0.3em] text-[#a58b72]">
-            How I Know Him
+            A note for you
           </p>
 
           <h2 className="mt-4 text-center font-serif text-3xl">
-            A friendship worth keeping
+            Hello, Kuya Ban!
           </h2>
 
           <div className="mx-auto my-6 h-px w-12 bg-[#cdbba8]" />
 
           <div className="space-y-6 text-center text-base leading-8 text-[#6f655d] sm:text-lg">
             <p>
-              This is where you tell the story of how you and Vincent first met.
+              Salamat sa pag-attend sa kasal ko at sa paglalaan ng oras para
+              maging groomsman ko.
             </p>
 
             <p>
-              You can talk about the early days of your friendship, the
-              experiences you shared, the stupid things you laughed about, and
-              the moments that made you realize he was someone you could always
-              count on.
+              Isa sa mga alaala ko sa inyo ay noong nagpa-process kayo gamit
+              ang dilaw na kotse ni Mommy na may sticker ni Tweety Bird. Hindi
+              ko pa alam noon kung gaano kahirap magpa-process; ang naaalala ko
+              lang ay ang vending machine sa seaport.
             </p>
 
             <p>
-              Over the years, friendships change and life gets busier, but some
-              people remain an important part of your story. Vincent is one of
-              those people.
+              Salamat, Kuya, sa mga itinuro mo sa akin at sa palagi mong
+              pag-encourage sa akin na sumama sa mga rides. Salamat din dahil
+              lagi mong sinasamahan at ine-encourage si Daddy na mag-unwind
+              mula sa trabaho.
             </p>
 
             <p>
-              And now, as I begin this new chapter of my life, I can't imagine
-              having my wedding day without having you there beside me.
+              Sobrang naa-appreciate ko ang oras na inilaan mo para sa kasal
+              ko. Ngayong mag-aasawa na ako, hindi na lang tungkol sa motor at
+              anime ang mga itatanong ko sa susunod—pati family life na rin.
+              Hahaha!
             </p>
+
+            <p>Salamat sa lahat, Kuya! Salute!</p>
           </div>
         </motion.section>
 
@@ -104,11 +109,11 @@ function RyanPage() {
           className="mt-12 text-center"
         >
           <p className="font-serif text-2xl text-[#4b433d]">
-            Thank you for being part of my story, Vincent.
+            Salamat sa lahat, Kuya Ban.
           </p>
 
           <p className="mt-4 text-sm text-[#8c7663]">
-            I’m glad you’ll be part of this next chapter too.
+            Looking forward to more rides, anime, and family-life advice!
           </p>
         </motion.section>
       </div>
