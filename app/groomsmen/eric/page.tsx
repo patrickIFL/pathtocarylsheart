@@ -27,7 +27,7 @@ function EricPage() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="mt-4 font-serif text-5xl sm:text-6xl"
           >
-            Vincent
+            Eric Salac Go
           </motion.h1>
 
           <motion.div
@@ -47,8 +47,8 @@ function EricPage() {
         >
           <div className="relative aspect-[4/5] overflow-hidden">
             <Image
-              src="https://res.cloudinary.com/dbav6z7re/image/upload/v1790708838/vincent_rjzw7g.jpg"
-              alt="Vincent"
+              src="https://res.cloudinary.com/dbav6z7re/image/upload/v1794501169/eric_irygwc.jpg"
+              alt="Eric"
               fill
               className="object-cover"
             />

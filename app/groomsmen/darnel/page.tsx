@@ -27,7 +27,7 @@ function DarnellPage() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="mt-4 font-serif text-5xl sm:text-6xl"
           >
-            Vincent
+            Darnel Brodeth
           </motion.h1>
 
           <motion.div
@@ -47,8 +47,8 @@ function DarnellPage() {
         >
           <div className="relative aspect-[4/5] overflow-hidden">
             <Image
-              src="https://res.cloudinary.com/dbav6z7re/image/upload/v1790708838/vincent_rjzw7g.jpg"
-              alt="Vincent"
+              src="https://res.cloudinary.com/dbav6z7re/image/upload/v1794501140/darnel_zc1ij1.jpg"
+              alt="Darnel"
               fill
               className="object-cover"
             />
